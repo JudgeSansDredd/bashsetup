@@ -1,0 +1,5 @@
+source .bash/.bash_functions
+source .bash/.bash_aliases
+source .bash/.bash_variables
+source .bash/.bash_path
+source .bash/.bash_prompt
