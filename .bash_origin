@@ -3,3 +3,8 @@ source ~/.bash/.bash_aliases
 source ~/.bash/.bash_variables
 source ~/.bash/.bash_path
 source ~/.bash/.bash_prompt
+
+if [ -f ~/.bash/.git-completion.bash ]; then
+	. ~/.bash/.git-completion.bash
+fi
+
