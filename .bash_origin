@@ -12,3 +12,4 @@ if [ -f ~/.bash/.git-completion.bash ]; then
 	. ~/.bash/.git-completion.bash
 fi
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1

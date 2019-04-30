@@ -1,6 +1,7 @@
 
 # This bit changes the prompt when you're in a Git repo.
 
+unset -f _git_prompt
 function _git_prompt() {
     COMMIT_DIFFERENCES=0
     local git_status="`git status -unormal 2>&1`"
@@ -39,7 +40,7 @@ function _git_prompt() {
         else
             local gitcolour="$ORANGE non-committed changes $MSG_AHEAD"
         fi
-        
+
         if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
             branch=${BASH_REMATCH[1]}
             test "$branch" != master || branch=''
@@ -51,12 +52,27 @@ function _git_prompt() {
     echo -n "$gitcolour"
     fi
 }
+export -f _git_prompt
 
 # Colour your prompt
 
+unset -f _prompt_command
 function _prompt_command() {
-    PS1='\n\n\[$LBLUE\]\w`_git_prompt`\n\[$GREEN\]>> \[$YELLOW\]'
+    PS1='\n\n`_py_env`\[$LBLUE\]\w`_git_prompt`\n\[$GREEN\]>> \[$YELLOW\]'
+    # PS1='\n\n\[$LBLUE\]\w`_git_prompt`\n\[$GREEN\]>> \[$YELLOW\]'
 }
+export -f _prompt_command
+
+unset -f _py_env
+function _py_env() {
+    local pyenv_version="`pyenv version-name`"
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "$GREEN[$pyenv_version] "
+    elif ! [[ "$pyenv_version" =~ system ]]; then
+        echo "$PINK[$pyenv_version] "
+    fi
+}
+set -f _py_env
 
 export PROMPT_COMMAND=_prompt_command
 
