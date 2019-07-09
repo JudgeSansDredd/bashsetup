@@ -9,6 +9,6 @@ if [ -f ~/.bash/.bash_custom ]; then
 fi
 
 if [ -f ~/.bash/.git-completion.bash ]; then
-	. ~/.bash/.git-completion.bash
+	source ~/.bash/.git-completion.bash
 fi
 
