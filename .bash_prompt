@@ -1,6 +1,7 @@
 
 # This bit changes the prompt when you're in a Git repo.
 
+unset -f _git_prompt
 function _git_prompt() {
     COMMIT_DIFFERENCES=0
     local git_status="`git status -unormal 2>&1`"
@@ -51,12 +52,15 @@ function _git_prompt() {
     echo -n "$gitcolour"
     fi
 }
+export _git_prompt
 
 # Colour your prompt
 
+unset _prompt_command
 function _prompt_command() {
     PS1='\n\n\[$LBLUE\]\w`_git_prompt`\n\[$GREEN\]>> \[$YELLOW\]'
 }
+export _prompt_command
 
 export PROMPT_COMMAND=_prompt_command
 
