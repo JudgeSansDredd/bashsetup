@@ -5,7 +5,7 @@ unset -f _git_prompt
 function _git_prompt() {
     COMMIT_DIFFERENCES=0
     local git_status="`git status -unormal 2>&1`"
-    if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+    if ! [[ "$git_status" =~ not\ a\ git\ repo ]]; then
         local local_branch="`(git branch 2>/dev/null | grep '^*' | colrm 1 2)`"
         local remote_branch="`git for-each-ref --format='%(upstream:short)' $(git rev-parse --symbolic-full-name $local_branch)`"
         # local fetch_results="`git fetch ${remote_branch/\// } --quiet`"
