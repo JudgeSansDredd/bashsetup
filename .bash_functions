@@ -4,6 +4,12 @@ function sub {
 }
 export -f sub
 
+unset -f _vcomm
+function _vcomm {
+    vagrant ssh -- -t '$1'
+}
+export -f _vcomm
+
 unset -f chrome
 function chrome {
     google-chrome http://localhost:$1 --incognito &
@@ -22,18 +28,3 @@ function _pacc {
 }
 export -f _pacc
 
-unset -f open_project
-function open_project {
-	vagrant up &
-	subl .
-	sh /opt/navicat/start_navicat &
-	chrome 8088
-}
-export -f open_project
-
-unset -f binarybuild
-function binarybuild {
-	box build
-	cp sfp.phar /usr/local/bin/sfp
-}
-export -f binarybuild
