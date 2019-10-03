@@ -4,12 +4,6 @@ function sub {
 }
 export -f sub
 
-unset -f _vcomm
-function _vcomm {
-    vagrant ssh $1 -- -t $2
-}
-export -f _vcomm
-
 unset -f chrome
 function chrome {
     google-chrome http://localhost:$1 --incognito &
