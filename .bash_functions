@@ -6,7 +6,7 @@ export -f sub
 
 unset -f _vcomm
 function _vcomm {
-    vagrant ssh -- -t '$1'
+    vagrant ssh $1 -- -t $2
 }
 export -f _vcomm
 
