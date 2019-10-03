@@ -16,15 +16,3 @@ function chrome {
 }
 export -f chrome
 
-unset -f _pacc
-function _pacc {
-	php artisan cache:clear
-	php artisan optimize:clear
-	php artisan config:clear
-	php artisan route:clear
-	php artisan view:clear
-	composer clear-cache
-	composer dump-autoload
-}
-export -f _pacc
-
