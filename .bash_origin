@@ -1,14 +1,11 @@
-source ~/.bash/.bash_functions
 source ~/.bash/.bash_aliases
 source ~/.bash/.bash_variables
 source ~/.bash/.bash_path
-# source ~/.bash/.bash_prompt
+
+fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
+autoload _vcomm
 
 if [ -f ~/.bash/.bash_custom ]; then
 	source ~/.bash/.bash_custom
 fi
-
-# if [ -f ~/.bash/.git-completion.bash ]; then
-# 	source ~/.bash/.git-completion.bash
-# fi
 
