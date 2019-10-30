@@ -13,3 +13,5 @@ alias vrsall="cd ~/Projects/ap_ops; _vcomm spensa 'sudo supervisorctl restart al
 alias vsass="cd ~/Projects/ap_ops; _vcomm spensa 'cd /opt/spensa/openscout; npm run build-sass;'; cd -;"
 alias vss="cd ~/Projects/ap_ops; _vcomm spensa 'cd /spensa; sh run_platform_dev_server_letsencrypt.sh'; cd -;"
 alias vpip="cd ~/Projects/ap_ops; _vcomm spensa 'cd /opt/spensa/openscout; pip uninstall -yr requirements.txt; pip install -r requirements.txt --user;'; cd -;"
+alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
