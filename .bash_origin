@@ -1,6 +1,7 @@
 source ~/.bash/.bash_aliases
 source ~/.bash/.bash_variables
 source ~/.bash/.bash_path
+source ~/.bash/.zsh_numpad
 
 fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
 # autoload _vcomm
