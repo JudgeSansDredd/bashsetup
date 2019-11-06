@@ -9,10 +9,11 @@
 # Install auto-suggestions
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # Edit ~/.zshrc
-## Set DEFAULT_USER to your usual login
-    DEFAULT_USER='nathan'
 ## Source your bash file
     source ~/.bash/.bash_origin
+> **Note:** This must be done at the *bottom* of your `~/.zshrc` file
+## Set DEFAULT_USER to your usual login
+    DEFAULT_USER='nathan'
 ## Change the theme to agnoster
     ZSH_THEME="agnoster"
 ## Add Plugins
@@ -26,3 +27,7 @@
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 # Install bat
     brew install bat
+This is already aliased to `cat`
+# Install exa
+    brew install exa
+This is already aliased to `ls`
