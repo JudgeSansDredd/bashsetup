@@ -16,18 +16,11 @@
     DEFAULT_USER='nathan'
 ## Change the theme to agnoster
     ZSH_THEME="agnoster"
-## Add Plugins
+## Load Plugins
     plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 ## Source the oh my zshell shell script
     source $ZSH/oh-my-zsh.sh
-# Install tldr
-    brew install tldr
-# Install diff-so-fancy
-    brew install diff-so-fancy
+# Brew install command line tools
+    brew install tldr diff-so-fancy bat
+# Configure git to use diff-so-fancy
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-# Install bat
-    brew install bat
-This is already aliased to `cat`
-# Install exa
-    brew install exa
-This is already aliased to `ls`
