@@ -14,7 +14,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 cp ./.zshrc ~/.zshrc
 
 # Brew install command line tools
-brew install tldr diff-so-fancy bat
+brew install tldr diff-so-fancy bat exa
 
 # Configure git to use diff-so-fancy
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
