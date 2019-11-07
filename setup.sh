@@ -1,7 +1,8 @@
-# Switch to zshell if not already there
-chsh -s /bin/zsh
+######################
+# Setup Oh My Zshell #
+######################
 
-# Install Oh My Zshell
+# Install oh my zshell (this will ask to switch shells if you have not
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Install syntax highlighting
@@ -13,8 +14,15 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # Copy to ~/.zshrc
 cp ./.zshrc ~/.zshrc
 
+####################################
+# Brew install other terminal apps #
+####################################
+
 # Brew install command line tools
-brew install tldr diff-so-fancy bat
+brew install tldr diff-so-fancy bat fzf
+
+# Setup fzf hotkeys and such
+/usr/local/opt/fzf/install
 
 # Configure git to use diff-so-fancy
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
