@@ -1,4 +1,5 @@
 alias grm='git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -d'
+alias gs="git status"
 alias vssh="cd ~/Projects/ap_ops; _vcomm spensa 'cd /opt/spensa/openscout; /bin/bash;'; cd -"
 alias vup="cd ~/Projects/ap_ops; vagrant up spensa; cd -"
 alias vhalt="cd ~/Projects/ap_ops; vagrant halt spensa; cd -"
@@ -16,6 +17,5 @@ alias web="cd ~/Projects/ap_web"
 alias ops="cd ~/Projects/ap_ops"
 alias cat="bat"
 alias ls="exa --group-directories-first"
-alias gs="git status"
 alias fzf="fzf --height 40% --reverse --preview 'cat {}'"
 
