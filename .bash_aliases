@@ -17,5 +17,5 @@ alias ops="cd ~/Projects/ap_ops"
 alias cat="bat"
 alias ls="exa --group-directories-first"
 alias gs="git status"
-alias fzf="fzf --height 40% --reverse"
+alias fzf="fzf --height 40% --reverse --preview 'cat {}'"
 
