@@ -18,4 +18,4 @@ alias ops="cd ~/Projects/ap_ops"
 alias cat="bat"
 alias ls="exa --group-directories-first"
 alias fzf="fzf --height 40% --reverse --preview 'cat {}'"
-
+alias pip="pip3"
