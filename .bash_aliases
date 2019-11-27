@@ -10,6 +10,7 @@ alias vrs="cd ~/Projects/ap_ops; _vcomm spensa 'sudo supervisorctl restart opens
 alias vrsall="cd ~/Projects/ap_ops; _vcomm spensa 'sudo supervisorctl restart all;'; cd -"
 alias vsass="cd ~/Projects/ap_ops; _vcomm spensa 'cd /opt/spensa/openscout; npm run build-sass;'; cd -"
 alias vss="cd ~/Projects/ap_ops; _vcomm spensa 'cd /spensa; sh run_platform_dev_server_letsencrypt.sh 2>&1 | grep -v \" 200 \";'; cd -"
+alias vssv="cd ~/Projects/ap_ops; _vcomm spensa 'cd /spensa; sh run_platform_dev_server_letsencrypt.sh 2>&1;'; cd -"
 alias vprov="cd ~/Projects/ap_ops; vagrant provision; cd -"
 alias vpip="_vpip"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
