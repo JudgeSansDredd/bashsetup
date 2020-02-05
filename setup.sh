@@ -19,7 +19,7 @@ cp ./.zshrc ~/.zshrc
 ####################################
 
 # Brew install command line tools
-brew install tldr diff-so-fancy bat fzf
+brew install tldr diff-so-fancy bat fzf ack
 
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
