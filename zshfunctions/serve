@@ -1,1 +1,1 @@
-~/ngrok http $1
+~/ngrok http --subdomain=nathanbstanley $1
