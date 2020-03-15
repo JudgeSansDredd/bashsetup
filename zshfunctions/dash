@@ -1,0 +1,3 @@
+cd ~/Projects/ap-cloudwatch/ops
+ansible-playbook -i hosts env.yml -l ap-cloudwatch.local -t $1
+cd -
