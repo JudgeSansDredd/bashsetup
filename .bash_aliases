@@ -2,7 +2,7 @@ alias grm='git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branc
 alias gstale='for branch in `git branch -r --merged | grep -v HEAD`; do echo -e `git show --format="%ci %cr %an" $branch | head -n 1` \\t$branch; done | sort -r'
 alias gs="git status"
 alias vssh="cd ~/Projects/ap_ops; _vcomm spensa 'cd /opt/spensa/openscout; /bin/bash;'; cd -"
-alias vup="cd ~/Projects/ap_ops; vagrant up spensa; cd -"
+alias vup="cd ~/Projects/ap_ops; vagrant up spensa; _vcomm spensa 'sudo supervisorctl stop all;'; cd -"
 alias vhalt="cd ~/Projects/ap_ops; vagrant halt spensa; cd -"
 alias vdestroy="cd ~/Projects/ap_ops; vagrant destroy -f; cd -"
 alias vsp="cd ~/Projects/ap_ops; _vcomm spensa 'cd /opt/spensa/openscout; ./manage.py shell_plus;'; cd -"
