@@ -2,6 +2,8 @@ source ~/.bash/.bash_aliases
 source ~/.bash/.bash_path
 source ~/.bash/.zsh_numpad
 
+# freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
+
 fpath=(~/.bash/zshfunctions "${fpath[@]}")
 autoload ~/.bash/zshfunctions/*
 
