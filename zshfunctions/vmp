@@ -1,3 +1,3 @@
 cd ~/Projects/ap/ap_web
-_vcomm spensa "cd /opt/spensa/openscout; python manage.py $*;"
+_vcomm spensa "cd /opt/spensa/openscout; python manage.py $*"
 cd -
