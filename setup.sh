@@ -1,3 +1,4 @@
+#!/bin/bash
 ######################
 # Setup Oh My Zshell #
 ######################
@@ -12,14 +13,21 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Copy to ~/.zshrc
-cp ./.zshrc ~/.zshrc
+cp ./.zshrc.template ~/.zshrc
 
 ####################################
 # Brew install other terminal apps #
 ####################################
 
+# Brew install php 7.3
+brew install php@7.3
+brew link --overwrite --force php@7.3
+
+# Brew install Google Chrome
+brew cask install google-chrome
+
 # Brew install command line tools
-brew install tldr diff-so-fancy bat fzf ack
+brew install tldr diff-so-fancy bat fzf ack exa sip
 
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
