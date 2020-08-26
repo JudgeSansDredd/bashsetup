@@ -13,7 +13,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Copy to ~/.zshrc
-cp ./.zshrc ~/.zshrc
+cp ./.zshrc.template ~/.zshrc
 
 ####################################
 # Brew install other terminal apps #
