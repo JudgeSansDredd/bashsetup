@@ -4,7 +4,6 @@ source ~/.bash/.bash_path
 source ~/.bash/.zsh_numpad
 
 fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
-# autoload _vcomm
 autoload ~/.bash/zshfunctions/*
 
 if [ -f ~/.bash/.bash_custom ]; then
