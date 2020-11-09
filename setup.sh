@@ -25,6 +25,7 @@ brew link --overwrite --force php@7.3
 
 # Brew install Google Chrome
 brew cask install google-chrome
+brew cask install rectangle spotify
 
 # Brew install command line tools
 brew install tldr diff-so-fancy bat fzf ack exa sip
