@@ -30,6 +30,9 @@ brew cask install rectangle spotify
 # Brew install command line tools
 brew install tldr diff-so-fancy bat fzf ack exa
 
+# Brew install aws session manager
+brew install --cask session-manager-plugin
+
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
 
