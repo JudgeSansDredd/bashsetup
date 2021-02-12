@@ -37,3 +37,6 @@ alias cwserve="cd ~/Projects/ap-cloudwatch; php -S localhost:8000 -t public; cd 
 alias dtnauth="aws-azure-login --profile dtn-aws-master --enable-chrome-seamless-sso"
 alias dc="docker-compose"
 alias dcomm="docker exec -it service_fields_app_1"
+alias aeistart="cd ~/Projects/Hercules/service_fields; docker-compose up -d; npm run migrate; cd ~/Projects/Hercules/aei; npm run dev"
+alias aeistop="cd ~/Projects/Hercules/service_fields; docker-compose down; cd -"
+alias dtnnpm="cd ~/Projects/dtn-eco-npm-registry; sh start.sh; cd -"
