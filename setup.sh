@@ -3,8 +3,14 @@
 # Setup Oh My Zshell #
 ######################
 
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install zshell
+brew install zsh
+
 # Install oh my zshell (this will ask to switch shells if you have not
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install syntax highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -24,8 +30,8 @@ brew install php@7.3
 brew link --overwrite --force php@7.3
 
 # Brew install Google Chrome
-brew cask install google-chrome
-brew cask install rectangle spotify
+brew install --cask google-chrome
+brew install --cask rectangle spotify
 
 # Brew install command line tools
 brew install tldr diff-so-fancy bat fzf ack exa
