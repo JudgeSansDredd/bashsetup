@@ -37,3 +37,4 @@ alias cwserve="cd ~/Projects/ap-cloudwatch; php -S localhost:8000 -t public; cd 
 alias dtnauth="aws-azure-login --profile dtn-aws-master --enable-chrome-seamless-sso"
 alias dc="docker-compose"
 alias dtnnpm="cd ~/Projects/dtn-eco-npm-registry; sh start.sh; cd -"
+alias pa="php artisan"
