@@ -6,6 +6,9 @@
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Install iterm
+brew install --cask iterm2
+
 # Install zshell
 brew install zsh
 
@@ -20,6 +23,13 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Copy to ~/.zshrc
 cp ./.zshrc.template ~/.zshrc
+
+# Install fonts
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts
+./install.sh
+cd ..
+rm -rf fonts
 
 ####################################
 # Brew install other terminal apps #
@@ -46,6 +56,9 @@ brew install tldr diff-so-fancy bat fzf ack exa
 
 # Brew install aws session manager
 brew install --cask session-manager-plugin
+
+# Brew install alfred
+brew install --cask alfred
 
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
