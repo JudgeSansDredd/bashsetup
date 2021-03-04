@@ -1,0 +1,1 @@
+cd ~/Projects/ap/ap_web; _vcomm spensa "cd /opt/spensa/openscout; sudo pip $*"; cd -;

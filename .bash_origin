@@ -1,14 +1,17 @@
-source ~/.bash/.bash_functions
 source ~/.bash/.bash_aliases
 source ~/.bash/.bash_variables
 source ~/.bash/.bash_path
-source ~/.bash/.bash_prompt
+source ~/.bash/.zsh_numpad
+
+fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
+autoload ~/.bash/zshfunctions/*
 
 if [ -f ~/.bash/.bash_custom ]; then
 	source ~/.bash/.bash_custom
 fi
 
-if [ -f ~/.bash/.git-completion.bash ]; then
-	source ~/.bash/.git-completion.bash
-fi
+# iterm_profile() {
+#     echo -ne "\033]50;SetProfile=Default\a"
+# }
 
+# export PROMPT_COMMAND='${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r; iterm_profile; ls;'
