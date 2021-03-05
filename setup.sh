@@ -66,6 +66,9 @@ brew install --cask session-manager-plugin
 # Brew install alfred
 brew install --cask alfred
 
+# Brew install composer
+brew install composer
+
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
 
