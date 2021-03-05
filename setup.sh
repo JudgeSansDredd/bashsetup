@@ -54,9 +54,6 @@ brew install --cask rectangle
 # Brew install Spotify
 brew install --cask spotify
 
-# Brew install Docker
-brew install --cask docker
-
 # Brew install virtualbox
 brew install virtualbox
 
