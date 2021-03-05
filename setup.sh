@@ -31,6 +31,12 @@ cd fonts
 cd ..
 rm -rf fonts
 
+# Brew install slack
+brew install --cask slack
+
+# Brew install Teams
+brew install --cask microsoft-teams
+
 ####################################
 # Brew install other terminal apps #
 ####################################
