@@ -57,6 +57,15 @@ brew install --cask spotify
 # Brew install Docker
 brew install --cask docker
 
+# Brew install virtualbox
+brew install virtualbox
+
+# Brew install Vagrant
+brew install vagrant
+
+# Brew install ansible
+brew install --cask ansible
+
 # Brew install command line tools
 brew install tldr diff-so-fancy bat fzf ack exa
 
@@ -68,6 +77,9 @@ brew install --cask alfred
 
 # Brew install composer
 brew install composer
+
+# Brew install node 
+brew install node
 
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
