@@ -1,6 +1,7 @@
 source ~/.bash/.bash_aliases
 source ~/.bash/.bash_path
 source ~/.bash/.zsh_numpad
+source ~/.bash/.bash_nvm
 
 fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
 autoload ~/.bash/zshfunctions/*
