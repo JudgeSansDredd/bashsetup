@@ -1,3 +1,4 @@
+source ~/.bash/.bash_git
 source ~/.bash/.bash_aliases
 source ~/.bash/.bash_path
 source ~/.bash/.zsh_numpad
@@ -15,5 +16,3 @@ fi
 # }
 
 # export PROMPT_COMMAND='${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r; iterm_profile; ls;'
-
-source ~/.bash/.bash_git
