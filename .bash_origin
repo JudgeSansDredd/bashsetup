@@ -15,3 +15,5 @@ fi
 # }
 
 # export PROMPT_COMMAND='${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r; iterm_profile; ls;'
+
+source ~/.bash/.bash_git

@@ -38,3 +38,5 @@ alias dtnauth="aws-azure-login --profile dtn-aws-master --enable-chrome-seamless
 alias dc="docker-compose"
 alias dtnnpm="cd ~/Projects/dtn-eco-npm-registry; sh start.sh; cd -"
 alias pa="php artisan"
+alias aei="cd ~/Projects/hercules/aei"
+alias hydra="cd ~/Projects/hercules/hydra"
