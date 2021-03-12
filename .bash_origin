@@ -1,18 +1,24 @@
+echo "Updating profile from git"
 source ~/.bash/.bash_git
+
+echo "Updating aliases"
 source ~/.bash/.bash_aliases
+
+echo "Updating path"
 source ~/.bash/.bash_path
+
+echo "Allowing numpad use in terminal/vim"
 source ~/.bash/.zsh_numpad
+
+echo "Setting up nvm"
 source ~/.bash/.bash_nvm
 
+echo "Setting up zsh functions"
 fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
 autoload ~/.bash/zshfunctions/*
 
 if [ -f ~/.bash/.bash_custom ]; then
+	echo "Sourcing .bash_custom"
 	source ~/.bash/.bash_custom
 fi
 
-# iterm_profile() {
-#     echo -ne "\033]50;SetProfile=Default\a"
-# }
-
-# export PROMPT_COMMAND='${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r; iterm_profile; ls;'
