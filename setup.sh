@@ -78,17 +78,21 @@ brew install node
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
 
-# Configure git to use diff-so-fancy
+# Copy global git ignore
+cp ./.gitignore.global.template ~/.gitignore.global
+
+# Configure git
+git config --global core.excludesfile ~/.gitignore.global
+git config --global user.name "Nathan Stanley"
+git config --global user.email "chemapfours@gmail.com"
+git config --global push.default current
+git config --global pull.rebase false
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-
-# Configure git to use different colors for diffs
 git config --global color.ui true
-
 git config --global color.diff-highlight.oldNormal    "red bold"
 git config --global color.diff-highlight.oldHighlight "red bold 52"
 git config --global color.diff-highlight.newNormal    "green bold"
 git config --global color.diff-highlight.newHighlight "green bold 22"
-
 git config --global color.diff.meta       "11"
 git config --global color.diff.frag       "magenta bold"
 git config --global color.diff.commit     "yellow bold"
