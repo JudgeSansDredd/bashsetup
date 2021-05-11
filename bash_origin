@@ -6,6 +6,6 @@ source ~/.bash/bash_source/bash_nvm
 fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
 autoload ~/.bash/zshfunctions/*
 
-if [ -f ~/.bash/.bash_custom ]; then
+if [ -f ~/.bash/bash_source/bash_custom ]; then
 	source ~/.bash/bash_source/bash_custom
 fi
