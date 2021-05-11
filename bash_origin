@@ -1,17 +1,17 @@
 echo "Updating profile from git"
-source ~/.bash/.bash_git
+source ~/.bash/bash_source/bash_git
 
 echo "Updating aliases"
-source ~/.bash/.bash_aliases
+source ~/.bash/bash_source/bash_aliases
 
 echo "Updating path"
-source ~/.bash/.bash_path
+source ~/.bash/bash_source/bash_path
 
 echo "Allowing numpad use in terminal/vim"
-source ~/.bash/.zsh_numpad
+source ~/.bash/bash_source/zsh_numpad
 
 echo "Setting up nvm"
-source ~/.bash/.bash_nvm
+source ~/.bash/bash_source/bash_nvm
 
 echo "Setting up zsh functions"
 fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
@@ -19,6 +19,6 @@ autoload ~/.bash/zshfunctions/*
 
 if [ -f ~/.bash/.bash_custom ]; then
 	echo "Sourcing .bash_custom"
-	source ~/.bash/.bash_custom
+	source ~/.bash/bash_source/bash_custom
 fi
 
