@@ -1,4 +1,4 @@
-echo "Updating profile from git"
+echo "Checking if profile is up to date"
 source ~/.bash/bash_source/bash_git
 
 echo "Updating aliases"

@@ -1,3 +1,22 @@
-cd ~/.bash &>/dev/null
-git pull
-cd - &>/dev/null
+UPDATE_FILE=~/.bash/update
+
+if test -f "$UPDATE_FILE"; then
+    if test `find "$UPDATE_FILE" -mtime +1`; then
+        UPDATE=true
+    else
+        UPDATE=false
+    fi
+else
+    UPDATE=true
+fi
+
+if [ "$UPDATE" = true ]; then
+    echo "Updating profile from GitHub"
+    cd ~/.bash &>/dev/null
+    git pull
+    cd - &>/dev/null
+else
+    echo "No update to profile needed"
+fi
+
+
