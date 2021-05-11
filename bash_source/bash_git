@@ -13,7 +13,7 @@ fi
 if [ "$UPDATE" = true ]; then
     echo "Updating profile from GitHub"
     cd ~/.bash &>/dev/null
-    git pull
+    git pull &>/dev/null
     cd - &>/dev/null
 
     echo `date -u +"%Y-%m-%dT%H:%M:%S%Z"` > ~/.bash/update
