@@ -1,3 +1,0 @@
-cd ~/.bash &>/dev/null
-git pull
-cd - &>/dev/null

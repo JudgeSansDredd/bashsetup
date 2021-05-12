@@ -1,0 +1,11 @@
+source ~/.bash/bash_source/bash_git
+source ~/.bash/bash_source/bash_aliases
+source ~/.bash/bash_source/bash_path
+source ~/.bash/bash_source/zsh_numpad
+source ~/.bash/bash_source/bash_nvm
+fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
+autoload ~/.bash/zshfunctions/*
+
+if [ -f ~/.bash/bash_source/bash_custom ]; then
+	source ~/.bash/bash_source/bash_custom
+fi

@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 DEFAULT_USER='nathan'
-source ~/.bash/.bash_origin
+source ~/.bash/bash_origin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
