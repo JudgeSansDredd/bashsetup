@@ -70,7 +70,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions alias-finder)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,7 +104,4 @@ DEFAULT_USER='nathan'
 source ~/.bash/bash_origin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-export PATH="/usr/local/opt/node@14/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
