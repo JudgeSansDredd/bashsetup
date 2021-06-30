@@ -72,6 +72,9 @@ brew install --cask alfred
 # Brew install composer
 brew install composer
 
+# Brew install composer formatter
+brew install php-cs-fixer
+
 # Brew install node 
 brew install node
 
