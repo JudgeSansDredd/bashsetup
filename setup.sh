@@ -42,6 +42,9 @@ brew install --cask microsoft-teams
 brew install php@7.3
 brew link --overwrite --force php@7.3
 
+# Install php formatter
+brew install php-cs-fixer
+
 # Brew install Google Chrome
 brew install --cask google-chrome
 
