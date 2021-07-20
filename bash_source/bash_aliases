@@ -51,3 +51,5 @@ alias api="cd ~/Projects/aei-premium/aei-premium-api"
 alias ui="cd ~/Projects/aei-premium/aei-premium-ui"
 alias tempo="open -a \"Google Chrome\" https://dtnse1.atlassian.net/plugins/servlet/ac/io.tempo.jira/tempo-app"
 alias hercules="open -a \"Google Chrome\" https://dtnse1.atlassian.net/secure/RapidBoard.jspa\?rapidView\=786\&projectKey\=AGPH"
+
+alias gcd="git checkout development"
