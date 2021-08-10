@@ -81,6 +81,9 @@ brew install node
 # Brew install terraform
 brew install terraform
 
+# Brew install jq
+brew install jq
+
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
 
