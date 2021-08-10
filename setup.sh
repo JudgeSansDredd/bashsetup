@@ -78,6 +78,9 @@ brew install composer
 # Brew install node 
 brew install node
 
+# Brew install terraform
+brew install terraform
+
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
 
