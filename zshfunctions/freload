@@ -1,6 +1,0 @@
-while (( $# ))
-do
-unfunction $1
-autoload -U $1
-shift
-done

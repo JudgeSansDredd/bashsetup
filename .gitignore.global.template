@@ -1,1 +1,3 @@
 .vscode/
+.php-cs-fixer.php
+.DS_Store

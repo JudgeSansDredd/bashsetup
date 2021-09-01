@@ -1,1 +1,0 @@
-aws ssm start-session --target $1 --profile dtn-ag-dev
