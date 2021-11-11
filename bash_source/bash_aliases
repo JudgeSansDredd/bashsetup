@@ -52,3 +52,4 @@ alias hercules="open -a \"Google Chrome\" https://dtnse1.atlassian.net/secure/Ra
 alias bitbucket="open -a \"Google Chrome\" https://bitbucket.org/dashboard/overview"
 alias gcd="git checkout development"
 alias ghidden="git ls-files -v | grep '^S'"
+alias aws-local='docker run --rm -it --network hercules --ip 172.11.0.7 -p 4566:4566 localstack/localstack -e "SERVICES=dynamodb,s3,lambda,sqs"'

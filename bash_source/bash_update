@@ -15,6 +15,10 @@ if [ "$UPDATE" = true ]; then
     cd ~/.bash &>/dev/null
     git pull &>/dev/null
     cd - &>/dev/null
+    echo "Updating TLDR"
+    tldr --update
+    echo "Updating Homebrew"
+    brew update
 
     echo `date -u +"%Y-%m-%dT%H:%M:%S%Z"` > ~/.bash/update
 fi
