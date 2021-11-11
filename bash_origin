@@ -1,4 +1,4 @@
-source ~/.bash/bash_source/bash_git
+source ~/.bash/bash_source/bash_update
 source ~/.bash/bash_source/bash_aliases
 source ~/.bash/bash_source/bash_path
 source ~/.bash/bash_source/zsh_numpad
