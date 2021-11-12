@@ -1,4 +1,4 @@
 export PATH="$PATH:~/.config/composer/vendor/bin:/usr/local/opt/php@7.3/bin:~/.local/bin/"
 
-export FZF_CTRL_T_OPTS="--preview 'bat {} --style=numbers --color=always' --height=75% --preview-window hidden --bind '?:toggle-preview'"
+export FZF_CTRL_T_OPTS="--preview 'bat {} --style=numbers --color=always' --height=75% --bind '?:toggle-preview'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
