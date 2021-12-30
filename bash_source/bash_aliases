@@ -43,7 +43,7 @@ alias dclean="yes | docker system prune -a && yes | docker volume prune"
 alias dstop='docker stop $(docker ps -q) 2> /dev/null'
 alias dkill='docker kill $(docker ps -q) 2> /dev/null'
 alias psysh="php ~/.composer/vendor/bin/psysh"
-alias nn="rm -rf node_modules/ && rm package-lock.json"
+alias nn="rm -rf node_modules/; rm package-lock.json"
 alias api="cd ~/Projects/aei-premium/aei-premium-api"
 alias ui="cd ~/Projects/aei-premium/aei-premium-ui"
 alias tempo="open -a \"Google Chrome\" https://dtnse1.atlassian.net/plugins/servlet/ac/io.tempo.jira/tempo-app"
@@ -52,3 +52,4 @@ alias bitbucket="open -a \"Google Chrome\" https://bitbucket.org/dashboard/overv
 alias gcd="git checkout development"
 alias ghidden="git ls-files -v | grep '^S'"
 alias aws-local='docker run --rm -it --network hercules --ip 172.11.0.7 -p 4566:4566 localstack/localstack -e "SERVICES=dynamodb,s3,lambda,sqs"'
+alias uuid="uuidgen | tee >(tr -d '\n' | pbcopy)"
