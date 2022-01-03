@@ -78,6 +78,9 @@ brew install composer
 # Brew install node 
 brew install node
 
+# Brew install volta (node version manager)
+brew install volta
+
 # Brew install terraform
 brew install terraform
 
