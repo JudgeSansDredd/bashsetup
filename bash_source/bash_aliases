@@ -53,3 +53,5 @@ alias gcd="git checkout development"
 alias ghidden="git ls-files -v | grep '^S'"
 alias aws-local='docker run --rm -it --network hercules --ip 172.11.0.7 -p 4566:4566 localstack/localstack -e "SERVICES=dynamodb,s3,lambda,sqs"'
 alias uuid="uuidgen | tee >(tr -d '\n' | pbcopy)"
+alias bashupdate="rm ~/.bash/update; source ~/.zshrc"
+alias updatebash="bashupdate"
