@@ -1,7 +1,7 @@
-alias grm='git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -d'
-alias grmd='git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -D'
 alias gstale='for branch in `git branch -r --merged | grep -v HEAD`; do echo -e `git show --format="%ci %cr %an" $branch | head -n 1` \\t$branch; done | sort -r'
 alias gs="git status"
+alias gdd="git diff origin/development"
+alias gmd="gfa; git merge origin/development"
 alias vssh="cd ~/Projects/ap/ap_web; _vcomm spensa 'cd /opt/spensa/openscout; /bin/bash;'; cd -"
 alias vup="cd ~/Projects/ap/ap_web; vagrant up spensa; _vcomm spensa 'sudo supervisorctl stop all;'; cd -"
 alias vhalt="cd ~/Projects/ap/ap_web; vagrant halt spensa; cd -"
