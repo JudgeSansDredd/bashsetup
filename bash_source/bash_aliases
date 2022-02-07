@@ -55,5 +55,5 @@ alias aws-local='docker run --rm -it --network hercules --ip 172.11.0.7 -p 4566:
 alias bashupdate="rm ~/.bash/update; source ~/.zshrc"
 alias updatebash="bashupdate"
 alias uuid="uuidgen | awk '{print tolower(\$0)}' | tr -d '\n' | tee >(pbcopy) && echo ''"
-alias compundservice="cd ~/Projects/aseda/compound_service"
+alias compoundservice="cd ~/Projects/aseda/compound_service"
 alias customerclient="cd ~/Projects/aseda/customer_platform/customer-client"
