@@ -4,5 +4,5 @@ export FZF_CTRL_T_OPTS="--preview 'bat {} --style=numbers --color=always' --heig
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
 export AZURE_DEFAULT_USERNAME="nathan.stanley@dtn.com"
-export K8S_INFRA_ROOT="/Volumes/CaseSensitive/Projects/hercules/k8s-infra"
+export K8S_INFRA_ROOT="/Users/nathan/Projects/hercules/k8s-infra"
 source "${K8S_INFRA_ROOT}/helpers.sh"
