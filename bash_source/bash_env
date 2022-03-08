@@ -2,7 +2,3 @@ export PATH="$PATH:~/.config/composer/vendor/bin:/usr/local/opt/php@7.4/bin:/usr
 
 export FZF_CTRL_T_OPTS="--preview 'bat {} --style=numbers --color=always' --height=75% --bind '?:toggle-preview'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
-
-export AZURE_DEFAULT_USERNAME="nathan.stanley@dtn.com"
-export K8S_INFRA_ROOT="/Users/nathan/Projects/hercules/k8s-infra"
-source "${K8S_INFRA_ROOT}/helpers.sh"
