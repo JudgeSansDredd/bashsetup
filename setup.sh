@@ -61,7 +61,7 @@ brew install virtualbox
 brew install vagrant
 
 # Brew install ansible
-brew install ansible
+brew install --cask ansible
 
 # Brew install command line tools
 brew install tldr diff-so-fancy bat fzf ack exa
@@ -96,7 +96,7 @@ cp ./.gitignore.global.template ~/.gitignore.global
 # Configure git
 git config --global core.excludesfile ~/.gitignore.global
 git config --global user.name "Nathan Stanley"
-git config --global user.email "nstanley@bandwidth.com"
+git config --global user.email "chemapfours@gmail.com"
 git config --global push.default current
 git config --global pull.rebase false
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
