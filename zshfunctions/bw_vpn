@@ -20,14 +20,11 @@ else
 
         LPPW=`lpass show --password bandwidth.com`
 
-        read 'MFA?MFA Code: '
-            
         /opt/cisco/anyconnect/bin/vpn -s connect "RDU VPN" <<EOF
 0
 $BWUSERNAME
 $LPPW
-3
-$MFA
+2
 y
 EOF
     fi
