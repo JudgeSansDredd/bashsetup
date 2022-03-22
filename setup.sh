@@ -116,3 +116,10 @@ git config --global color.diff.whitespace "red reverse"
 # Vim RC #
 ##########
 cp ~/.bash/.vimrc ~/.vimrc
+
+################
+# AWS CLI TOOL #
+################
+# Install AWS CLI 2.x
+curl -s "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
