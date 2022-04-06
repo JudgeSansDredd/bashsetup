@@ -18,6 +18,7 @@ alias pidown="ssh pihole 'sudo pihole disable 30s'"
 alias dclean="yes | docker system prune -a && yes | docker volume prune"
 alias dstop='docker stop $(docker ps -q) 2> /dev/null'
 alias dkill='docker kill $(docker ps -q) 2> /dev/null'
+alias lad='lazydocker'
 alias psysh="php ~/.composer/vendor/bin/psysh"
 alias nn="rm -rf node_modules/; rm package-lock.json"
 alias api="cd ~/Projects/aei-premium/aei-premium-api"
