@@ -1,1 +1,1 @@
-open -a "Google Chrome" https://bandwidth-jira.atlassian.net/browse/CFA-$1
+open -a "Google Chrome Beta" https://bandwidth-jira.atlassian.net/browse/CFA-$1
