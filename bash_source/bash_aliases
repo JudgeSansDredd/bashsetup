@@ -26,6 +26,7 @@ alias ui="cd ~/Projects/aei-premium/aei-premium-ui"
 alias gcd="git checkout development"
 alias ghidden="git ls-files -v | grep '^S'"
 alias aws-local='docker run --rm -it --network hercules --ip 172.11.0.7 -p 4566:4566 localstack/localstack -e "SERVICES=dynamodb,s3,lambda,sqs"'
+alias awsl="aws --profile=localstack --endpoint-url=http://localhost:4566"
 alias bashupdate="rm ~/.bash/update; source ~/.zshrc"
 alias updatebash="bashupdate"
 alias uuid="uuidgen | awk '{print tolower(\$0)}' | tr -d '\n' | tee >(pbcopy) && echo ''"
