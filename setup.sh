@@ -87,6 +87,9 @@ brew install terraform
 # Brew install jq
 brew install jq
 
+# Composer install psysh
+composer global require psy/psysh
+
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
 
