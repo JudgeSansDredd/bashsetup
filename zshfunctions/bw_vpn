@@ -9,7 +9,7 @@ if [ -n "$1" ]; then
     /opt/cisco/anyconnect/bin/vpn $1
 else
     if [ "$STATE" = "Connected" ]; then
-        echo "already connected"
+	info_box "Already connected!"
     else
         LPSTATUS=`lpass status`
 
