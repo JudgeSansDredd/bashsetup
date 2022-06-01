@@ -1,31 +1,234 @@
-BWUSERNAME=`whoami`
-hash lpass 2>/dev/null || { echo -e "\n${red}LastPass-cli not found.\n${default}run '${cyan}brew install lastpass-cli${default}'"; kill -INT $$; }
-    
-info_box "Connecting to Bandwidth VPN"
+#!/bin/bash
 
-STATE=`/opt/cisco/anyconnect/bin/vpn state | sed -n 7p | awk '{print $NF}'`
+VERSION='1.1.4'
 
-if [ -n "$1" ]; then
-    /opt/cisco/anyconnect/bin/vpn $1
+CONFIG_FILE="$HOME/.bw-vpn/config"
+source $CONFIG_FILE
+
+TERMINAL_HEIGHT=`tput lines`
+BOX_HEIGHT=`printf "%.0f" $(echo "scale=2; $TERMINAL_HEIGHT * .5" | bc)`
+
+TERMINAL_WIDTH=`tput cols`
+BOX_WIDTH=`printf "%.0f" $(echo "scale=2; $TERMINAL_WIDTH * .75" | bc)`
+
+if hash whiptail 2>/dev/null; then
+    echo ""
 else
-    if [ "$STATE" = "Connected" ]; then
-	info_box "Already connected!"
-    else
-        LPSTATUS=`lpass status`
+    if [ "$(uname)" = "Darwin" ]; then
+        brew install newt
+    elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+        sudo apt install whiptail
+    fi
+fi
 
-        if [ "$LPSTATUS" = "Not logged in." ]; then
-            read 'LPEMAIL?LastPass Email: '
-            lpass login --trust $LPEMAIL
+ensureLastPassCli() {
+    # Ensure the LastPass CLI is installed so we can secure the users okta password.
+    if hash lpass 2>/dev/null; then
+        echo ""
+    else
+        if (whiptail --yesno "You must install LastPass CLI to use this tool. Do you with to continue?" $BOX_HEIGHT $BOX_WIDTH); then
+            if [ "$(uname)" = "Darwin" ]; then
+                brew install lastpass-cli
+            elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+                sudo apt install lastpass-cli
+            fi
+        fi
+    fi
+}
+
+setConfigValue() {
+    # Escape spaces
+    NEW_CONFIG_VALUE=${2//\ /\\\ }
+    if grep -Fq "export $1=" $CONFIG_FILE
+    then
+        # we have to add the -i '' argument for mac
+        [ "$(uname)" = "Darwin" ] && args="-i ''" || args="-i"
+        # Escape the backslashes
+        NEW_CONFIG_VALUE=${NEW_CONFIG_VALUE//\\/\\\\}
+        `sed $args "s/export $1.*/export $1=$NEW_CONFIG_VALUE/g" $CONFIG_FILE`
+    else
+        echo "export $1=$NEW_CONFIG_VALUE" >> $CONFIG_FILE
+    fi
+    # this dynamically sets the variable name in the script scope
+    printf -v "$1" '%s' "$2"
+}
+
+selfUpdate() {
+    sudo curl https://raw.githubusercontent.com/peledies/bw-vpn/main/bw-vpn --output /usr/local/bin/bw-vpn && sudo chmod +x /usr/local/bin/bw-vpn
+}
+
+setLastPassKeyName() {
+    LASTPASS_KEY_NAME=$(whiptail --inputbox "What is the LastPass record Name where your password is stored" --nocancel $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "LastPass Record Name" 3>&1 1>&2 2>&3)
+
+    setConfigValue "LASTPASS_KEY_NAME" $LASTPASS_KEY_NAME
+}
+
+setLastPassEnabled() {
+    if (whiptail --yesno "Do you use LastPass for a password manager? If so we can use the stored vpn password." $BOX_HEIGHT $BOX_WIDTH --title "LastPass Enabled" 3>&1 1>&2 2>&3); then
+        setConfigValue "LASTPASS_ENABLED" "true"
+    else
+        setConfigValue "LASTPASS_ENABLED" "false"
+    fi
+}
+
+setVpnEndpoint() {
+    VPN_ENDPOINT=$(whiptail --inputbox "VPN Endpoint" --nocancel $BOX_HEIGHT $BOX_WIDTH $VPN_ENDPOINT --title "VPN Endpoint" 3>&1 1>&2 2>&3)
+
+    setConfigValue "VPN_ENDPOINT" $VPN_ENDPOINT
+}
+
+setLastPassEmail() {
+    LASTPASS_EMAIL=$(whiptail --inputbox "LastPass Email" --nocancel $BOX_HEIGHT $BOX_WIDTH $LASTPASS_EMAIL --title "LastPass Email" 3>&1 1>&2 2>&3)
+    setConfigValue "LASTPASS_EMAIL" $LASTPASS_EMAIL
+}
+
+setVpnUsername() {
+    [  -z "$VPN_USERNAME" ] && USER_SLUG=$(whoami) || USER_SLUG=$VPN_USERNAME
+    VPN_USERNAME=$(whiptail --inputbox "VPN Username" --nocancel $BOX_HEIGHT $BOX_WIDTH $USER_SLUG --title "VPN Username" 3>&1 1>&2 2>&3)
+    setConfigValue "VPN_USERNAME" $VPN_USERNAME
+}
+
+configure() {
+    mkdir -p $HOME/.bw-vpn
+    touch $CONFIG_FILE
+
+    if [ -z "$LASTPASS_ENABLED" ]; then
+        setLastPassEnabled
+    fi
+
+    if [ -z "$VPN_USERNAME" ]; then
+        setVpnUsername
+    fi
+
+    if [ -z "$VPN_ENDPOINT" ]; then
+        setVpnEndpoint
+    fi
+
+    if $LASTPASS_ENABLED ; then
+        ensureLastPassCli
+
+        if [ -z "$LASTPASS_EMAIL" ]; then
+            setLastPassEmail
         fi
 
-        LPPW=`lpass show --password bandwidth.com`
+        if [ -z "$LASTPASS_KEY_NAME" ]; then
+            setLastPassKeyName
+        fi
+    fi
+}
 
-        /opt/cisco/anyconnect/bin/vpn -s connect "RDU VPN" <<EOF
+connect() {
+echo "$VPN_PASSWORD"
+    if $LASTPASS_ENABLED ; then
+        LASTPASS_STATUS=`lpass status`
+
+        if [ "$LASTPASS_STATUS" = "Not logged in." ]; then
+            echo "Autheticating with LastPass"
+            lpass login --trust $LASTPASS_EMAIL
+        else
+            echo "LastPass authenticated"
+        fi
+
+        VPN_PASSWORD=`lpass show --password $LASTPASS_KEY_NAME`
+    else
+        VPN_PASSWORD=$(
+            whiptail --title "VPN Actions" --passwordbox "VPN Password" $BOX_HEIGHT $BOX_WIDTH 3>&2 2>&1 1>&3
+        )
+    fi
+
+    /opt/cisco/anyconnect/bin/vpn -s connect $VPN_ENDPOINT <<EOF
 0
-$BWUSERNAME
-$LPPW
+$VPN_USERNAME
+$VPN_PASSWORD
 2
 y
 EOF
-    fi
-fi
+}
+
+disconnect() {
+    /opt/cisco/anyconnect/bin/vpn disconnect
+    STATE="disconnected"
+}
+
+msgBox() {
+    whiptail --msgbox "$1" $BOX_HEIGHT $BOX_WIDTH
+}
+
+configure
+
+configurationMenu() {
+    CONFIG_CHOICE=$(
+    whiptail --title "VPN Configuration" --nocancel --menu "Select an item from the menu" $BOX_HEIGHT $BOX_WIDTH 5 \
+        "1)" "Enable/Disable LastPass" \
+        "2)" "Change LastPass Email" \
+        "3)" "Change VPN Endpoint" \
+        "4)" "Change VPN Username" \
+        "x)" "Exit" 3>&2 2>&1 1>&3
+    )
+    case $CONFIG_CHOICE in
+        "1)")
+            setLastPassEnabled
+            configure
+        ;;
+        "2)")
+            setLastPassEmail
+        ;;
+        "3)")
+            setVpnEndpoint
+        ;;
+
+        "4)")
+            setVpnUsername
+        ;;
+
+        "x)")
+        ;;
+    esac
+
+}
+
+while [ 1 ]
+do
+CHOICE=$(
+whiptail --title "VPN Actions $VERSION" --nocancel --menu "Select an item from the menu" $BOX_HEIGHT $BOX_WIDTH 6 \
+	"1)" "Connection Status"   \
+	"2)" "Connect"  \
+	"3)" "Disconnect" \
+    "4)" "Configuration" \
+    "5)" "Update" \
+    "x)" "Exit" 3>&2 2>&1 1>&3
+)
+
+STATE=`/opt/cisco/anyconnect/bin/vpn state | sed -n 7p | awk '{print $NF}'`
+
+case $CHOICE in
+	"1)")
+        msgBox "Current VPN state: $STATE"
+	;;
+	"2)")
+        if [ "$STATE" = "Connected" ]; then
+            msgBox "VPN Already Connected"
+        else
+            connect
+            msgBox "VPN Connected"
+        fi
+	;;
+
+	"3)")
+        disconnect
+        msgBox "VPN Disconnected"
+    ;;
+
+    "4)")
+        configurationMenu
+    ;;
+    "5)")
+        selfUpdate
+    ;;
+    "x)")
+        exit
+    ;;
+esac
+done
+exit
+
