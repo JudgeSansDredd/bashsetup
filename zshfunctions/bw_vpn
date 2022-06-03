@@ -53,10 +53,6 @@ setConfigValue() {
     printf -v "$1" '%s' "$2"
 }
 
-selfUpdate() {
-    sudo curl https://raw.githubusercontent.com/peledies/bw-vpn/main/bw-vpn --output /usr/local/bin/bw-vpn && sudo chmod +x /usr/local/bin/bw-vpn
-}
-
 setLastPassKeyName() {
     LASTPASS_KEY_NAME=$(whiptail --inputbox "What is the LastPass record Name where your password is stored" --nocancel $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "LastPass Record Name" 3>&1 1>&2 2>&3)
 
@@ -221,9 +217,6 @@ case $CHOICE in
 
     "4)")
         configurationMenu
-    ;;
-    "5)")
-        selfUpdate
     ;;
     "x)")
         exit
