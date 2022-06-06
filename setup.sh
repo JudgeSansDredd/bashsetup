@@ -64,10 +64,13 @@ brew install vagrant
 brew install --cask ansible
 
 # Brew install command line tools
-brew install tldr diff-so-fancy bat fzf ack exa
+brew install tldr diff-so-fancy bat fzf ack exa lastpass-cli lazydocker fig slack htop
 
 # Brew install aws session manager
 brew install --cask session-manager-plugin
+
+# Brew install monitor control
+brew install --cask monitorcontrol
 
 # Brew install alfred
 brew install --cask alfred
