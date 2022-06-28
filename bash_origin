@@ -1,4 +1,5 @@
 source ~/.bash/bash_source/bash_update
+source ~/.bash/bash_source/colors
 source ~/.bash/bash_source/bash_aliases
 source ~/.bash/bash_source/bash_env
 source ~/.bash/bash_source/zsh_numpad
