@@ -1,4 +1,20 @@
 #!/bin/bash
+# Whiptail stuff
+TERMINAL_HEIGHT=`tput lines`
+BOX_HEIGHT=`printf "%.0f" $(echo "scale=2; $TERMINAL_HEIGHT * .5" | bc)`
+TERMINAL_WIDTH=`tput cols`
+BOX_WIDTH=`printf "%.0f" $(echo "scale=2; $TERMINAL_WIDTH * .75" | bc)`
+
+if hash whiptail 2>/dev/null; then
+    echo ""
+else
+    if [ "$(uname)" = "Darwin" ]; then
+        brew install newt
+    elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+        sudo apt install whiptail
+    fi
+fi
+
 ######################
 # Setup Oh My Zshell #
 ######################
@@ -6,11 +22,8 @@
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install iterm
-brew install --cask iterm2
-
 # Install zshell
-brew install zsh
+brew install iterm2 zsh
 
 # Install oh my zshell (this will ask to switch shells if you have not
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -22,7 +35,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Copy to ~/.zshrc
-cp ./.zshrc.template ~/.zshrc
+cp $HOME/.bash/.zshrc.template $HOME/.zshrc
 
 # Install fonts
 git clone https://github.com/powerline/fonts.git --depth=1
@@ -30,9 +43,6 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
-
-# Brew install Teams
-brew install --cask microsoft-teams
 
 ####################################
 # Brew install other terminal apps #
@@ -42,53 +52,7 @@ brew install --cask microsoft-teams
 brew install php@7.3
 brew link --overwrite --force php@7.3
 
-# Install php formatter
-brew install php-cs-fixer
-
-# Brew install Google Chrome
-brew install --cask google-chrome
-
-# Brew install rectangle
-brew install --cask rectangle
-
-# Brew install Spotify
-brew install --cask spotify
-
-# Brew install virtualbox
-brew install virtualbox
-
-# Brew install Vagrant
-brew install vagrant
-
-# Brew install ansible
-brew install --cask ansible
-
-# Brew install command line tools
-brew install tldr diff-so-fancy bat fzf ack exa lastpass-cli lazydocker fig slack htop
-
-# Brew install aws session manager
-brew install --cask session-manager-plugin
-
-# Brew install monitor control
-brew install --cask monitorcontrol
-
-# Brew install alfred
-brew install --cask alfred
-
-# Brew install composer
-brew install composer
-
-# Brew install node 
-brew install node
-
-# Brew install volta (node version manager)
-brew install volta
-
-# Brew install terraform
-brew install terraform
-
-# Brew install jq
-brew install jq
+brew install google-chrome rectangle spotify monitorcontrol alfred ansible tldr diff-so-fancy bat fzf ack exa lastpass-cli lazydocker fig slack htop composer session-manager-plugin node volta terraform jq
 
 # Composer install psysh
 composer global require psy/psysh
@@ -99,10 +63,13 @@ composer global require psy/psysh
 # Copy global git ignore
 cp ./.gitignore.global.template ~/.gitignore.global
 
+# Get git author email
+GIT_AUTHOR_EMAIL=$(whiptail --inputbox "What is the email address you would like used for git?" --nocancel $BOX_HEIGHT $BOX_WIDTH $GIT_AUTHOR_EMAIL --title "Git Author Email" 3>&1 1>&2 2>&3)
+
 # Configure git
 git config --global core.excludesfile ~/.gitignore.global
 git config --global user.name "Nathan Stanley"
-git config --global user.email "chemapfours@gmail.com"
+git config --global user.email $GIT_AUTHOR_EMAIL
 git config --global push.default current
 git config --global pull.rebase false
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
