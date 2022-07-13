@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if hash whiptail 2>/dev/null; then
+    echo ""
+else
+    if [ "$(uname)" = "Darwin" ]; then
+        brew install newt
+    elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+        sudo apt install whiptail
+    fi
+fi
+
