@@ -51,7 +51,7 @@ exitstatus=$?
 # If cancel was not pressed, iterate through choices and download
 if [ $exitstatus = 0 ]; then
     # OK was pressed
-    for CHOICE in $CHOICES
+    for CHOICE in "${CHOICES[@]}"
     do
         (lpass show "${LASTPASS_SSH_FOLDER}/${CHOICE}" --notes) > "${SSH_CONFIG_CONFD}/${CHOICE}.config"
     done
@@ -81,7 +81,7 @@ exitstatus=$?
 # If cancel was not pressed, iterate through choices and download
 if [ $exitstatus = 0 ]; then
     # OK was pressed
-    for CHOICE in $CHOICES
+    for CHOICE in "${CHOICES[@]}"
     do
         (lpass show "${LASTPASS_PEM_FOLDER}/${CHOICE}" --field "Private Key") > "${PEM_DIRECTORY}/${CHOICE}.pem"
     done
