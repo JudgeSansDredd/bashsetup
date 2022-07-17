@@ -1,5 +1,0 @@
-if hash lpass 2>/dev/null; then
-    echo ""
-else
-    brew install lastpass-cli
-fi
