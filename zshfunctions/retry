@@ -1,10 +1,15 @@
 count=1
+sleeptime=1
 echo "${magenta}Attempt: ${cyan}${count}${default}"
 "$@"
-while [ $? -ne 0 ];
+result=$?
+while [ $result -ne 0 ];
 do
-    count=(($count+1))
+    echo "${red}Waiting ${cyan}${sleeptime} ${red}seconds...${default}"
+    sleep $sleeptime
+    sleeptime=$(($sleeptime*2))
+    count=$(($count+1))
     echo "${magenta}Attempt: ${cyan}${count}${default}"
-    sleep 5
     "$@"
+    result=$?
 done
