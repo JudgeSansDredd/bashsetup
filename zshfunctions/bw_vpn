@@ -218,9 +218,7 @@ case $CHOICE in
         configurationMenu
     ;;
     "x)")
-        exit
+        break
     ;;
 esac
 done
-exit
-
