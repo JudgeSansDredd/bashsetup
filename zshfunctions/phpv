@@ -8,10 +8,14 @@ choice=$(whiptail --title "PHP Version Switching" --menu "What version do you wi
 
 case $choice in
     "7")
-        brew unlink php@8.1 1>/dev/null 2>&1 && brew link --overwrite php@7.4 1>/dev/null 2>&1
+        brew list php@7.4 || brew install php@7.4
+        brew unlink php@8.1
+        brew link --overwrite php@7.4
     ;;
     "8")
-        brew unlink php@7.4 1>/dev/null 2>&1 && brew link --overwrite php@8.1 1>/dev/null 2>&1
+        brew list php@8.1 || brew install php@8.1
+        brew unlink php@7.4
+        brew link --overwrite php@8.1
     ;;
 esac
 clear
