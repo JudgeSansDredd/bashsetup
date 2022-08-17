@@ -26,3 +26,4 @@ alias awsl="aws --profile=localstack --endpoint-url=http://localhost:4566"
 alias bashupdate="rm ~/.bash/update; source ~/.zshrc"
 alias updatebash="bashupdate"
 alias uuid="uuidgen | awk '{print tolower(\$0)}' | tr -d '\n' | tee >(pbcopy) && echo ''"
+alias j=jump
