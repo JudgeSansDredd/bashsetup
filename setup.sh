@@ -60,14 +60,12 @@ composer global require psy/psysh
 # Setup fzf hotkeys and such
 /usr/local/opt/fzf/install
 
-# Copy global git ignore
-cp ./.gitignore.global.template ~/.gitignore.global
-
 # Get git author email
 GIT_AUTHOR_EMAIL=$(whiptail --inputbox "What is the email address you would like used for git?" --nocancel $BOX_HEIGHT $BOX_WIDTH $GIT_AUTHOR_EMAIL --title "Git Author Email" 3>&1 1>&2 2>&3)
 
 # Configure git
-git config --global core.excludesfile ~/.gitignore.global
+git config --global core.excludesfile ~/.bash/.gitignore.global
+git config --global core.hooksPath ~/.bash/githooks
 git config --global user.name "Nathan Stanley"
 git config --global user.email $GIT_AUTHOR_EMAIL
 git config --global push.default current
