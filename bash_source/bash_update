@@ -23,6 +23,6 @@ if [ "$UPDATE" = true ]; then
     brew cleanup &>/dev/null
 
     echo `date -u +"%Y-%m-%dT%H:%M:%S%Z"` > ~/.bash/update
+    echo "CHECK YOUR GIT SETTINGS, THEY MAY HAVE CHANGED"
 fi
 
-echo "CHECK YOUR GIT SETTINGS, THEY MAY HAVE CHANGED"
