@@ -14,10 +14,10 @@ BOX_HEIGHT=`printf "%.0f" $(echo "scale=2; $TERMINAL_HEIGHT * .5" | bc)`
 TERMINAL_WIDTH=`tput cols`
 BOX_WIDTH=`printf "%.0f" $(echo "scale=2; $TERMINAL_WIDTH * .75" | bc)`
 
-USERNAME=$(whiptail --inputbox "What is the username?" $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "Create Basic Auth Token" 3>&1 1>&2 2>&3)
-PASSWORD=$(whiptail --passwordbox "What is the password?" $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "Create Basic Auth Token" 3>&1 1>&2 2>&3)
+TOKEN_USERNAME=$(whiptail --inputbox "What is the username?" $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "Create Basic Auth Token" 3>&1 1>&2 2>&3)
+TOKEN_PASSWORD=$(whiptail --passwordbox "What is the password?" $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "Create Basic Auth Token" 3>&1 1>&2 2>&3)
 
-TOKEN=$(echo "${USERNAME}:${PASSWORD}" | base64)
+TOKEN=$(echo "${TOKEN_USERNAME}:${TOKEN_PASSWORD}" | base64)
 
 if $(whiptail --yesno "Your token is: '$TOKEN'. Do you want to copy it to your clipboard?" $BOX_HEIGHT $BOX_WIDTH --title "Create Basic Auth Token" 3>&1 1>&2 2>&3);
 then
