@@ -1,7 +1,7 @@
 UPDATE_FILE=~/.bash/update
 
 if test -f "$UPDATE_FILE"; then
-    if test `find "$UPDATE_FILE" -mmin +$((60*6))`; then
+    if test `find "$UPDATE_FILE" -mmin +$((60*12))`; then
         UPDATE=true
     else
         UPDATE=false
