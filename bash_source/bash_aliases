@@ -28,3 +28,4 @@ alias updatebash="bashupdate"
 alias uuid="uuidgen | awk '{print tolower(\$0)}' | tr -d '\n' | tee >(pbcopy) && echo ''"
 alias j=jump
 alias resetbt="sudo pkill bluetoothd"
+alias restartbt="resetbt"
