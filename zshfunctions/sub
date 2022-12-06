@@ -1,0 +1,16 @@
+#!/bin/bash
+
+CURRENTDIR=$(pwd)
+
+if [ "$CURRENTDIR" = "/" ]; then
+    echo "${red}Do not run sub command on /${default}"
+    return
+fi
+
+echo "${cyan}Running '$@' in..."
+for d in $CURRENTDIR/*/; do
+    cd $d
+    echo "${gold}${PWD##*/}${default}"
+    "$@" &>/dev/null
+done
+cd $CURRENTDIR
