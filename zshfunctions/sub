@@ -11,6 +11,6 @@ echo "${cyan}Running '$@' in..."
 for d in $CURRENTDIR/*/; do
     cd $d
     echo "${gold}${PWD##*/}${default}"
-    "$@" &>/dev/null
+    "$@"
 done
 cd $CURRENTDIR
