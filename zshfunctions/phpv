@@ -20,6 +20,7 @@ exitstatus=$?
 
 if [ $exitstatus = 0 ]; then
     brew list php@"$choice" || brew install php@"$choice"
+    brew unlink php
     brew link --overwrite php@"$choice"
     echo "${blue}PHP version successfully set to ${green}${choice}${default}"
 fi
