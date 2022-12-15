@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This git hook adds the branch name to the commit message.
 # we are assuming your branch name is based on your jira ticket here.
