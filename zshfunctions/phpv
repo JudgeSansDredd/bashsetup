@@ -19,8 +19,9 @@ choice=$(whiptail --title "PHP Version Switching" --menu "What version do you wi
 exitstatus=$?
 
 if [ $exitstatus = 0 ]; then
-    brew list php@"$choice" || brew install php@"$choice"
+    brew tap shivammathur/php
+    brew list shivammathur/php/php@"$choice" || brew install shivammathur/php/php@"$choice"
     brew unlink php
-    brew link --overwrite php@"$choice"
+    brew link --overwrite --force php@"$choice"
     echo "${blue}PHP version successfully set to ${green}${choice}${default}"
 fi
