@@ -68,7 +68,6 @@ brew_installable=(
     "composer"
     "session-manager-plugin"
     "node"
-    "volta"
     "terraform"
     "jq"
 )
@@ -98,7 +97,10 @@ if [[ " ${choices[*]} " =~ "fzf" ]]; then
     /usr/local/opt/fzf/install
 fi
 
-
+# Composer install psysh
+if (whiptail --yesno "Install volta?" --title "Volta" $BOX_HEIGHT $BOX_WIDTH); then
+    curl https://get.volta.sh | bash
+fi
 
 if (whiptail --yesno "Configure git on this machine?" --title "Git Config" $BOX_HEIGHT $BOX_WIDTH); then
     # Get git author email
