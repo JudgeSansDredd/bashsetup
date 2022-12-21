@@ -3,11 +3,14 @@ source ~/.bash/bash_source/colors
 source ~/.bash/bash_source/bash_aliases
 source ~/.bash/bash_source/bash_env
 source ~/.bash/bash_source/zsh_numpad
-# source ~/.bash/bash_source/nvm
-source ~/.bash/bash_source/volta
+source ~/.bash/bash_source/homebrew
+
 fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
 autoload ~/.bash/zshfunctions/*
 
 if [ -f ~/.bash/bash_source/bash_custom ]; then
 	source ~/.bash/bash_source/bash_custom
 fi
+
+# This must be done last
+source ~/.bash/bash_source/volta

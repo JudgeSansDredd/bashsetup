@@ -1,0 +1,5 @@
+# Homebrew path
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Add sbin to path
+export PATH="/usr/local/sbin:$PATH"
