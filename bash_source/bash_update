@@ -1,3 +1,19 @@
+# Whiptail calculations
+if hash whiptail 2>/dev/null; then
+    echo ""
+else
+    if [ "$(uname)" = "Darwin" ]; then
+        brew install newt
+    elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+        sudo apt install whiptail
+    fi
+fi
+TERMINAL_HEIGHT=`tput lines`
+BOX_HEIGHT=`printf "%.0f" $(echo "scale=2; $TERMINAL_HEIGHT * .5" | bc)`
+TERMINAL_WIDTH=`tput cols`
+BOX_WIDTH=`printf "%.0f" $(echo "scale=2; $TERMINAL_WIDTH * .75" | bc)`
+
+# Update file location
 UPDATE_FILE=~/.bash/update
 
 if test -f "$UPDATE_FILE"; then
@@ -11,16 +27,18 @@ else
 fi
 
 if [ "$UPDATE" = true ]; then
-    echo "Updating profile from GitHub"
-    cd ~/.bash &>/dev/null
-    git pull &>/dev/null
-    cd - &>/dev/null
-    echo "Updating TLDR"
-    tldr --update &>/dev/null
-    echo "Updating Homebrew"
-    brew update &>/dev/null
-    echo "Running brew cleanup"
-    brew cleanup &>/dev/null
+    if (whiptail --yesno "Update Profile?" --title "Update Profile" $BOX_HEIGHT $BOX_WIDTH); then
+        echo "Updating profile from GitHub"
+        cd ~/.bash &>/dev/null
+        git pull &>/dev/null
+        cd - &>/dev/null
+        echo "Updating TLDR"
+        tldr --update &>/dev/null
+        echo "Updating Homebrew"
+        brew update &>/dev/null
+        echo "Running brew cleanup"
+        brew cleanup &>/dev/null
+    fi
 
     echo `date -u +"%Y-%m-%dT%H:%M:%S%Z"` > ~/.bash/update
 fi
