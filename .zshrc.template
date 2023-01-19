@@ -23,7 +23,7 @@ antigen use oh-my-zsh
 
 # Load plugins
 antigen bundle git
-antigen bundle git-auto-fetch
+# antigen bundle git-auto-fetch
 antigen bundle gitfast
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
