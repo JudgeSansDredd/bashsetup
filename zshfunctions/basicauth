@@ -21,6 +21,6 @@ TOKEN=$(echo -n "${TOKEN_USERNAME}:${TOKEN_PASSWORD}" | base64)
 
 if $(whiptail --yesno "Your token is: '$TOKEN'. Do you want to copy it to your clipboard?" $BOX_HEIGHT $BOX_WIDTH --title "Create Basic Auth Token" 3>&1 1>&2 2>&3);
 then
-    echo "Basic $TOKEN" | pbcopy
+    echo -n "Basic $TOKEN" | pbcopy
     echo "Basic auth token copied to clipboard"
 fi
