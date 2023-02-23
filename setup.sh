@@ -108,6 +108,7 @@ if (whiptail --yesno "Configure git on this machine?" --title "Git Config" $BOX_
     git config --global user.name "Nathan Stanley"
     git config --global user.email $GIT_AUTHOR_EMAIL
     git config --global push.default current
+    git config --global push.autoSetupRemote true
     git config --global pull.rebase false
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
     git config --global color.ui true
