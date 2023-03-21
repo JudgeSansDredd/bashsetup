@@ -29,3 +29,5 @@ alias uuid="uuidgen | awk '{print tolower(\$0)}' | tr -d '\n' | tee >(pbcopy) &&
 alias j=jump
 alias resetbt="sudo pkill bluetoothd"
 alias restartbt="resetbt"
+alias klab="kubectl --kubeconfig ~/.kube/config-lab"
+alias kprod="kubectl --kubeconfig ~/.kube/config-prod"
