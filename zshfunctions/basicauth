@@ -1,18 +1,6 @@
 #!/usr/bin/env bash
 
-if hash whiptail 2>/dev/null; then
-    echo ""
-else
-    if [ "$(uname)" = "Darwin" ]; then
-        brew install newt
-    elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
-        sudo apt install whiptail
-    fi
-fi
-TERMINAL_HEIGHT=`tput lines`
-BOX_HEIGHT=`printf "%.0f" $(echo "scale=2; $TERMINAL_HEIGHT * .5" | bc)`
-TERMINAL_WIDTH=`tput cols`
-BOX_WIDTH=`printf "%.0f" $(echo "scale=2; $TERMINAL_WIDTH * .75" | bc)`
+setup_whiptail
 
 TOKEN_USERNAME=$(whiptail --inputbox "What is the username?" $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "Create Basic Auth Token" 3>&1 1>&2 2>&3)
 TOKEN_PASSWORD=$(whiptail --passwordbox "What is the password?" $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "Create Basic Auth Token" 3>&1 1>&2 2>&3)

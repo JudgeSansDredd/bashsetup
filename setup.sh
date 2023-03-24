@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Whiptail stuff
+# Whiptail stuff - This is performed by `setup_whiptail`, but you may not have it yet
 TERMINAL_HEIGHT=`tput lines`
 BOX_HEIGHT=`printf "%.0f" $(echo "scale=2; $TERMINAL_HEIGHT * .5" | bc)`
 TERMINAL_WIDTH=`tput cols`
