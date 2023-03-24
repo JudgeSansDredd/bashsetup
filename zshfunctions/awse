@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 profiles=(`aws configure list-profiles`)
 select option in $profiles; do
     echo "${cyan}Switching to AWS Profile: ${magenta}$option${default}"
