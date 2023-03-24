@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 PHP_VERSIONS=(
     "7.4"
     "8.1"

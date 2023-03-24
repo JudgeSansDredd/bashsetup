@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 php artisan optimize:clear
 composer clear-cache
 composer dump-autoload

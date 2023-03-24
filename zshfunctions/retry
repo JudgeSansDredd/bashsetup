@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 count=1
 sleeptime=1
 echo "${magenta}Attempt: ${cyan}${count}${default}"
