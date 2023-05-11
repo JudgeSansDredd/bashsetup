@@ -53,7 +53,6 @@ brew_installable=(
     "rectangle"
     "spotify"
     "monitorcontrol"
-    "alfred"
     "ansible"
     "tldr"
     "diff-so-fancy"
