@@ -49,6 +49,7 @@ fi
 ####################################
 brew_installable=(
     "iterm2"
+    "alfred"
     "google-chrome"
     "rectangle"
     "spotify"
