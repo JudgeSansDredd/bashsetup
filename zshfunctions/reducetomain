@@ -1,0 +1,4 @@
+git checkout main
+git fetch --all --prune
+git pull
+git branch | grep -v "main" | xargs git branch -D
