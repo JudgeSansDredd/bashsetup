@@ -1,0 +1,17 @@
+PROFILE=$(clippy aws sso assume)
+if [ $? -eq 0 ]
+then
+    export AWS_PROFILE=$PROFILE
+    export AWS_DEFAULT_PROFILE=$PROFILE
+    export AWS_EB_PROFILE=$PROFILE
+
+
+    # If you are switching to an ENG account it wont use SSO
+    USE_SSO=`aws configure get sso_start_url --profile $PROFILE`
+    if [ -z "${USE_SSO}" ]
+    then
+        clippy okta login --factor okta
+    else
+        aws sso login
+    fi
+fi
