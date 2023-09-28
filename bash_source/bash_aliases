@@ -1,6 +1,7 @@
 alias gstale='for branch in `git branch -r --merged | grep -v HEAD`; do echo -e `git show --format="%ci %cr %an" $branch | head -n 1` \\t$branch; done | sort -r'
 alias gs="git status"
 alias gdr="git diff -R"
+alias ls="eza"
 alias sp="shortpath"
 alias cat="bat"
 alias fzf="fzf --height 40% --reverse --preview 'cat {}'"

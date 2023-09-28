@@ -48,6 +48,7 @@ fi
 # Brew install other terminal apps #
 ####################################
 brew_installable=(
+    "eza"
     "iterm2"
     "alfred"
     "google-chrome"
