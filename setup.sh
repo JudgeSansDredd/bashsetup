@@ -60,7 +60,6 @@ brew_installable=(
     "bat"
     "fzf"
     "ack"
-    "exa"
     "volta"
     "lastpass-cli"
     "lazydocker"
