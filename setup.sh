@@ -50,7 +50,6 @@ fi
 brew_installable=(
     "eza"
     "iterm2"
-    "alfred"
     "google-chrome"
     "rectangle"
     "spotify"
