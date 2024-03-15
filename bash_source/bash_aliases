@@ -1,18 +1,14 @@
 alias gstale='for branch in `git branch -r --merged | grep -v HEAD`; do echo -e `git show --format="%ci %cr %an" $branch | head -n 1` \\t$branch; done | sort -r'
 alias gs="git status"
-alias gdr="git diff -R"
 alias ls="eza"
 alias sp="shortpath"
 alias cat="bat"
-alias fzf="fzf --height 40% --reverse --preview 'cat {}'"
 alias python="python3"
 alias pip="pip3"
 alias dnsnuke="dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias addssh="ssh-add -K"
 alias dc="docker compose"
-alias tf="terraform"
 alias pa="php artisan"
-alias pidown="ssh pihole 'sudo pihole disable 30s'"
 alias dclean="yes | docker system prune -a && yes | docker volume prune"
 alias dstop='docker stop $(docker ps -q) 2> /dev/null'
 alias dkill='docker kill $(docker ps -q) 2> /dev/null'
@@ -20,7 +16,6 @@ alias lad='lazydocker'
 alias psysh="php ~/.composer/vendor/bin/psysh"
 alias nn="rm -rf node_modules/; rm package-lock.json 2>/dev/null"
 alias nncc="rm -rf node_modules/; rm package-lock.json 2>/dev/null; npm cache clean --force"
-alias ghidden="git ls-files -v | grep '^S'"
 alias aws-local='docker run --rm -it --network hercules --ip 172.11.0.7 -p 4566:4566 localstack/localstack -e "SERVICES=dynamodb,s3,lambda,sqs"'
 alias awsl="aws --profile=localstack --endpoint-url=http://localhost:4566"
 alias bashupdate="rm ~/.bash/update; source ~/.bash/bash_source/bash_update"
