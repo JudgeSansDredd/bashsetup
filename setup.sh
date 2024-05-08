@@ -121,7 +121,7 @@ if (whiptail --yesno "Configure git on this machine?" --title "Git Config" $BOX_
     git config --global color.diff.old        "red bold"
     git config --global color.diff.new        "green bold"
     git config --global color.diff.whitespace "red reverse"
-    git config --global alias.unadd "restore --staged"
+    git config --global alias.unstage "restore --staged"
     git config --global alias.uncommit "reset HEAD^"
     git config --global alias.ignore "update-index --skip-worktree"
     git config --global alias.unignore "update-index --no-skip-worktree"
