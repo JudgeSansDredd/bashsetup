@@ -54,7 +54,6 @@ brew_installable=(
     "rectangle"
     "spotify"
     "monitorcontrol"
-    "ansible"
     "tldr"
     "diff-so-fancy"
     "bat"
@@ -65,11 +64,11 @@ brew_installable=(
     "lazydocker"
     "slack"
     "htop"
-    "composer"
     "session-manager-plugin"
     "node"
     "terraform"
     "jq"
+    "macmediakeyforwarder"
 )
 whiptail_brew_installable=()
 for value in "${brew_installable[@]}"
