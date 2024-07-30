@@ -1,4 +1,3 @@
-source ~/.bash/bash_source/bash_update
 source ~/.bash/bash_source/colors
 source ~/.bash/bash_source/bash_aliases
 source ~/.bash/bash_source/bash_env
@@ -11,6 +10,8 @@ autoload ~/.bash/zshfunctions/*
 if [ -f ~/.bash/bash_source/bash_custom ]; then
 	source ~/.bash/bash_source/bash_custom
 fi
+
+source ~/.bash/bash_source/bash_update
 
 # This must be done last
 source ~/.bash/bash_source/volta
