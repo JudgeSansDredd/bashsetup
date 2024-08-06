@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+npm config set @bw:registry https://bandwidth.jfrog.io/bandwidth/api/npm/npm-local-releases/
+
+npm login --registry=https://bandwidth.jfrog.io/bandwidth/api/npm/npm-local-releases/
