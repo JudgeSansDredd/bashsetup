@@ -65,7 +65,6 @@ brew_installable=(
     "slack"
     "htop"
     "session-manager-plugin"
-    "node"
     "terraform"
     "jq"
     "macmediakeyforwarder"
