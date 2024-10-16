@@ -1,3 +1,4 @@
+LASTPASS_EMAIL='nstanley@bandwidth.com'
 PROFILE=$(clippy aws sso assume)
 if [ $? -eq 0 ]
 then
@@ -10,8 +11,21 @@ then
     USE_SSO=`aws configure get sso_start_url --profile $PROFILE`
     if [ -z "${USE_SSO}" ]
     then
+        LASTPASS_STATUS=`lpass status`
+        if [ "$LASTPASS_STATUS" == "Not logged in." ]; then
+            echo "Authenticating with LastPass"
+            lpass login --trust $LASTPASS_EMAIL
+        else
+            echo "LastPass authenticated"
+        fi
         clippy okta login --factor okta
     else
-        aws sso login
+        SSO_ACCOUNT=$(aws sts get-caller-identity --query "Account" --output text)
+        if [ ${#SSO_ACCOUNT} -eq 12 ];  then
+            echo "AWS SSO session valid" ;
+        else
+            echo "AWS SSO session invalid"
+            aws sso login
+        fi
     fi
 fi
