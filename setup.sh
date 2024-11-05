@@ -68,6 +68,7 @@ brew_installable=(
     "terraform"
     "jq"
     "macmediakeyforwarder"
+    "pyenv"
 )
 whiptail_brew_installable=()
 for value in "${brew_installable[@]}"
