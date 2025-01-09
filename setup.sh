@@ -124,7 +124,7 @@ if (whiptail --yesno "Configure git on this machine?" --title "Git Config" $BOX_
     git config --global alias.uncommit "reset HEAD^"
     git config --global alias.ignore "update-index --skip-worktree"
     git config --global alias.unignore "update-index --no-skip-worktree"
-    git config --global alias.stale "branch --all --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\""
+    git config --global alias.stale "branch --all --sort=-committerdate --format=\"%(align:25)%(refname:short)%(end)%09%(committerdate:relative)\""
 fi
 
 ##########
