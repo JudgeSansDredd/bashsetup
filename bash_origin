@@ -3,6 +3,7 @@ source ~/.bash/bash_source/bash_aliases
 source ~/.bash/bash_source/bash_env
 source ~/.bash/bash_source/zsh_numpad
 source ~/.bash/bash_source/homebrew
+source ~/.bash/bash_source/pyenv
 
 fpath=( ~/.bash/zshfunctions "${fpath[@]}" )
 autoload ~/.bash/zshfunctions/*
