@@ -11,6 +11,7 @@ alias dclean="yes | docker system prune -a && yes | docker volume prune"
 alias dstop='docker stop $(docker ps -q) 2> /dev/null'
 alias dkill='docker kill $(docker ps -q) 2> /dev/null'
 alias lad='lazydocker'
+alias lag='lazygit'
 alias psysh="php ~/.composer/vendor/bin/psysh"
 alias nn="rm -rf node_modules/; rm package-lock.json 2>/dev/null"
 alias nncc="rm -rf node_modules/; rm package-lock.json 2>/dev/null; npm cache clean --force"

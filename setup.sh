@@ -62,6 +62,7 @@ brew_installable=(
     "volta"
     "lastpass-cli"
     "lazydocker"
+    "lazygit"
     "slack"
     "htop"
     "session-manager-plugin"
