@@ -54,7 +54,7 @@ brew_installable=(
     "rectangle"
     "spotify"
     "monitorcontrol"
-    "tldr"
+    "tlrc"
     "diff-so-fancy"
     "bat"
     "fzf"
