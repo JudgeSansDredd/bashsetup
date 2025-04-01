@@ -58,7 +58,6 @@ brew_installable=(
     "diff-so-fancy"
     "bat"
     "fzf"
-    "ack"
     "volta"
     "lastpass-cli"
     "lazydocker"
@@ -70,6 +69,7 @@ brew_installable=(
     "jq"
     "macmediakeyforwarder"
     "pyenv"
+    "gping"
 )
 whiptail_brew_installable=()
 for value in "${brew_installable[@]}"
@@ -142,4 +142,11 @@ fi
 if (whiptail --yesno "Install AWS CLI?" --title "AWS CLI" $BOX_HEIGHT $BOX_WIDTH); then
     curl -s "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
     sudo installer -pkg AWSCLIV2.pkg -target /
+fi
+
+################
+# Install Spot #
+################
+if (whiptail --yesno "Install Spot?" --title "Spot" $BOX_HEIGHT $BOX_WIDTH); then
+    volta install spot
 fi
