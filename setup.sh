@@ -70,7 +70,6 @@ brew_installable=(
     "macmediakeyforwarder"
     "pyenv"
     "gping"
-    "navi"
 )
 whiptail_brew_installable=()
 for value in "${brew_installable[@]}"
