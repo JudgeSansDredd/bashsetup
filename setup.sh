@@ -36,59 +36,19 @@ if (whiptail --yesno "Copy .zshrc.template to home directory?" --title ".zshrc" 
 fi
 
 # Install fonts
-if (whiptail --yesno "Install fonts for terminal?" --title "fonts" $BOX_HEIGHT $BOX_WIDTH); then
-    git clone https://github.com/powerline/fonts.git --depth=1
-    cd fonts
-    ./install.sh
-    cd ..
-    rm -rf fonts
-fi
+# NOTE: Used to manually install powerline fonts, now we're brew installing the "hack" Nerd Font
+# if (whiptail --yesno "Install fonts for terminal?" --title "fonts" $BOX_HEIGHT $BOX_WIDTH); then
+#     git clone https://github.com/powerline/fonts.git --depth=1
+#     cd fonts
+#     ./install.sh
+#     cd ..
+#     rm -rf fonts
+# fi
 
 ####################################
 # Brew install other terminal apps #
 ####################################
-./brew/brew_installable.sh
-# brew_installable=(
-#     "eza"
-#     "iterm2"
-#     "google-chrome"
-#     "rectangle"
-#     "spotify"
-#     "monitorcontrol"
-#     "tlrc"
-#     "diff-so-fancy"
-#     "bat"
-#     "fzf"
-#     "volta"
-#     "lastpass-cli"
-#     "lazydocker"
-#     "lazygit"
-#     "slack"
-#     "htop"
-#     "session-manager-plugin"
-#     "terraform"
-#     "jq"
-#     "macmediakeyforwarder"
-#     "pyenv"
-#     "gping"
-#     "starship"
-#     "font-hack-nerd-font"
-# )
-whiptail_brew_installable=()
-for value in "${brew_installable[@]}"
-do
-    whiptail_brew_installable+=("$value" "" ON)
-done
-choices=($(whiptail --title "Brew Install" --separate-output --checklist "What brew installable apps would you like installed?" $BOX_HEIGHT $BOX_WIDTH 20 "${whiptail_brew_installable[@]}" 3>&2 2>&1 1>&3))
-exitstatus=$?
-
-if [ $exitstatus = 0 ]; then
-    if [ ${#choices[@]} -gt 0 ]; then
-        brew install "${choices[@]}"
-        brew cleanup
-        brew doctor
-    fi
-fi
+source $HOME/.bash/brew/install.sh
 
 # Composer install psysh
 if (whiptail --yesno "Install psysh (php shell)?" --title "Psysh" $BOX_HEIGHT $BOX_WIDTH); then
