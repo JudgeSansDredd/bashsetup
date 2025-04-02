@@ -30,6 +30,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle jump
 
 # Load theme
+# NOTE: If you're using agnoster as your theme
 antigen theme agnoster
 
 # Apply antigen changes
@@ -44,3 +45,8 @@ DEFAULT_USER='nstanley'
 # Source custom profile settings
 source ~/.bash/bash_origin
 
+# Load theme
+# NOTE: If you're using pure as your theme, use this section
+# fpath+=("$(brew --prefix)/share/zsh/site-functions")
+# autoload -U promptinit; promptinit
+# prompt pure
