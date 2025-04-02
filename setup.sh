@@ -47,30 +47,33 @@ fi
 ####################################
 # Brew install other terminal apps #
 ####################################
-brew_installable=(
-    "eza"
-    "iterm2"
-    "google-chrome"
-    "rectangle"
-    "spotify"
-    "monitorcontrol"
-    "tlrc"
-    "diff-so-fancy"
-    "bat"
-    "fzf"
-    "volta"
-    "lastpass-cli"
-    "lazydocker"
-    "lazygit"
-    "slack"
-    "htop"
-    "session-manager-plugin"
-    "terraform"
-    "jq"
-    "macmediakeyforwarder"
-    "pyenv"
-    "gping"
-)
+./brew/brew_installable.sh
+# brew_installable=(
+#     "eza"
+#     "iterm2"
+#     "google-chrome"
+#     "rectangle"
+#     "spotify"
+#     "monitorcontrol"
+#     "tlrc"
+#     "diff-so-fancy"
+#     "bat"
+#     "fzf"
+#     "volta"
+#     "lastpass-cli"
+#     "lazydocker"
+#     "lazygit"
+#     "slack"
+#     "htop"
+#     "session-manager-plugin"
+#     "terraform"
+#     "jq"
+#     "macmediakeyforwarder"
+#     "pyenv"
+#     "gping"
+#     "starship"
+#     "font-hack-nerd-font"
+# )
 whiptail_brew_installable=()
 for value in "${brew_installable[@]}"
 do
