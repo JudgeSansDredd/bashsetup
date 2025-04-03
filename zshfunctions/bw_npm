@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# If ~/.npmrc exists, move it to ~/.npmrc.bak. If it doesn't move ~/.npmrc.bak to ~/.npmrc.
-if [ -f ~/.npmrc ]; then
-    mv ~/.npmrc ~/.npmrc.bak
+# If $HOME/.npmrc exists, move it to $HOME/.npmrc.bak. If it doesn't move $HOME/.npmrc.bak to $HOME/.npmrc.
+if [ -f $HOME/.npmrc ]; then
+    mv $HOME/.npmrc $HOME/.npmrc.bak
     echo "npmrc has been backed up"
 else
-    mv ~/.npmrc.bak ~/.npmrc
+    mv $HOME/.npmrc.bak $HOME/.npmrc
     echo "npmrc has been restored"
 fi

@@ -1,5 +1,5 @@
 # Source antigen
-source ~/antigen.zsh
+source $HOME/antigen.zsh
 
 # Load oh-my-zsh
 antigen use oh-my-zsh
@@ -23,10 +23,10 @@ antigen apply
 DEFAULT_USER='nstanley'
 
 # Allow fuzzy find to do its thing
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 # Source custom profile settings
-source ~/.bash/bash_origin
+source $HOME/.bash/bash_origin
 
 # Load theme
 # NOTE: If you're using pure as your theme, use this section
