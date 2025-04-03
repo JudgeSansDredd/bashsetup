@@ -1,0 +1,9 @@
+# Inserts a blank line between shell prompts
+command_timeout = 5000
+add_newline = true
+
+[git_metrics]
+disabled = false
+
+[kubernetes]
+disabled = true
