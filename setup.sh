@@ -95,7 +95,7 @@ fi
 # Vim RC #
 ##########
 if (whiptail --yesno "Copy .vimrc to this machine?" --title "Vimrc" $BOX_HEIGHT $BOX_WIDTH); then
-    cp ~/.bash/.vimrc ~/.vimrc
+    cp ~/.bash/.vimrc.template ~/.vimrc
 fi
 
 ################
