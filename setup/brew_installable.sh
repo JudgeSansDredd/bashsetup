@@ -1,4 +1,5 @@
 brew_installable=(
+    "alfred"
     "eza"
     "iterm2"
     "google-chrome"
