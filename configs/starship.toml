@@ -4,5 +4,9 @@ add_newline = true
 [git_metrics]
 disabled = false
 
+[git_commit]
+tag_disabled = false
+
 [kubernetes]
-disabled = true
+disabled = false
+detect_files = ['Chart.yaml']

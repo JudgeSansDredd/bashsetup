@@ -28,6 +28,6 @@ fi
 # Setup fzf hotkeys
 if [[ " ${choices[*]} " =~ "starship" ]]; then
     if (whiptail --yesno "Link starship.toml to config directory?" --title ".zshrc" $BOX_HEIGHT $BOX_WIDTH); then
-        ln -sf $HOME/.bash/configs/starship.toml $HOME/.config/starship.toml
+        ln -nsf $HOME/.bash/configs/starship.toml $HOME/.config/starship.toml
     fi
 fi
