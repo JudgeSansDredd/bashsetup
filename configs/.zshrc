@@ -1,5 +1,5 @@
 # Source antigen
-source $HOME/antigen.zsh
+source $HOME/.bash/configs/antigen.zsh
 
 # Load oh-my-zsh
 antigen use oh-my-zsh
