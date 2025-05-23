@@ -21,7 +21,7 @@ brew_installable=(
     "jq"
     "macmediakeyforwarder"
     "pyenv"
-    "gping"
+#   "gping"
 #   "pure"
     "starship"
     "font-hack-nerd-font"
