@@ -22,8 +22,13 @@ antigen apply
 # Change default user to suppress 'nstanley@hostname'
 DEFAULT_USER='nstanley'
 
-# Allow fuzzy find to do its thing
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
+fi
+source <(fzf --zsh)
+
 
 # Source custom profile settings
 source $HOME/.bash/bash_origin
