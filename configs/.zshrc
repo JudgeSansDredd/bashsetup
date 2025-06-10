@@ -22,16 +22,11 @@ antigen apply
 # Change default user to suppress 'nstanley@hostname'
 DEFAULT_USER='nstanley'
 
-# Setup fzf
-# ---------
-if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
-fi
-source <(fzf --zsh)
-
-
 # Source custom profile settings
 source $HOME/.bash/bash_origin
+
+# Setup fzf (make sure this is after sourcing from bash_origin)
+source <(fzf --zsh)
 
 # Load theme
 # NOTE: If you're using pure as your theme, use this section
