@@ -20,12 +20,7 @@ if [ $exitstatus = 0 ]; then
     fi
 fi
 
-# Setup fzf hotkeys
-if [[ " ${choices[*]} " =~ "fzf" ]]; then
-    /usr/local/opt/fzf/install
-fi
-
-# Setup fzf hotkeys
+# Setup starship options
 if [[ " ${choices[*]} " =~ "starship" ]]; then
     if (whiptail --yesno "Link starship.toml to config directory?" --title ".zshrc" $BOX_HEIGHT $BOX_WIDTH); then
         ln -nsf $HOME/.bash/configs/starship.toml $HOME/.config/starship.toml
