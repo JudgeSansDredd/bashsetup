@@ -34,7 +34,6 @@ brew-install-packages: homebrew
 	@echo "📦 Installing all brew packages..."
 	@brew install $(BREW_PACKAGES)
 	@brew cleanup
-	@brew doctor
 	@echo "✅ Brew packages installed"
 
 starship-config:
