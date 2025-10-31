@@ -25,7 +25,7 @@ zshrc:
 	@ln -nsf $(CONFIGS_DIR)/.zshrc $(HOME_DIR)/.zshrc
 	@echo "✅ .zshrc linked"
 
-antigen: zshrc
+antigen:
 	@echo "🔌 Setting up Antigen..."
 	@curl -L git.io/antigen > $(CONFIGS_DIR)/antigen.zsh
 	@echo "✅ Antigen downloaded"
@@ -37,7 +37,7 @@ brew-install-packages: homebrew
 	@brew doctor
 	@echo "✅ Brew packages installed"
 
-starship-config: zshrc
+starship-config:
 	@echo "🚀 Setting up Starship configuration..."
 	@if command -v starship &> /dev/null; then \
 		mkdir -p $(HOME_DIR)/.config; \
