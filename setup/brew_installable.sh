@@ -26,4 +26,5 @@ brew_installable=(
     "starship"
     "font-hack-nerd-font"
     "ack"
+    "maccy"
 )
