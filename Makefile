@@ -1,5 +1,3 @@
-.PHONY: all homebrew zshrc antigen brew-install-packages git vimrc aws clean help starship-config
-
 HOME_DIR := $(HOME)
 BASH_DIR := $(HOME)/.bash
 CONFIGS_DIR := $(BASH_DIR)/configs
@@ -8,9 +6,11 @@ BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontro
 				 slack htop session-manager-plugin terraform jq macmediakeyforwarder \
 				 pyenv starship font-hack-nerd-font ack maccy
 
+.PHONY: all
 all: homebrew zshrc antigen brew-install-packages git vimrc aws starship-config clean
 	@echo "✅ Complete setup finished!"
 
+.PHONY: homebrew
 homebrew:
 	@echo "🍺 Setting up Homebrew..."
 	@if ! command -v brew &> /dev/null; then \
@@ -19,23 +19,27 @@ homebrew:
 		echo "Homebrew already installed"; \
 	fi
 
+.PHONY: zshrc
 zshrc:
 	@echo "🐚 Setting up zshrc..."
 	@[ -e $(HOME_DIR)/.zshrc ] && rm -f $(HOME_DIR)/.zshrc
 	@ln -nsf $(CONFIGS_DIR)/.zshrc $(HOME_DIR)/.zshrc
 	@echo "✅ .zshrc linked"
 
+.PHONY: antigen
 antigen:
 	@echo "🔌 Setting up Antigen..."
 	@curl -L git.io/antigen > $(CONFIGS_DIR)/antigen.zsh
 	@echo "✅ Antigen downloaded"
 
+.PHONY: brew-install-packages
 brew-install-packages: homebrew
 	@echo "📦 Installing all brew packages..."
 	@brew install $(BREW_PACKAGES)
 	@brew cleanup
 	@echo "✅ Brew packages installed"
 
+.PHONY: starship-config
 starship-config:
 	@echo "🚀 Setting up Starship configuration..."
 	@if command -v starship &> /dev/null; then \
@@ -46,6 +50,7 @@ starship-config:
 		echo "Starship not installed, skipping config"; \
 	fi
 
+.PHONY: git
 git:
 	@echo "🔧 Setting up Git configuration..."
 	@git config --global core.excludesfile $(CONFIGS_DIR)/.gitignore.global
@@ -60,12 +65,14 @@ git:
 	@git config --global alias.uncommit "reset HEAD^"
 	@echo "✅ Git configured"
 
+.PHONY: vimrc
 vimrc:
 	@echo "📝 Setting up Vim configuration..."
 	@[ -e $(HOME_DIR)/.vimrc ] && rm -f $(HOME_DIR)/.vimrc
 	@ln -nsf $(CONFIGS_DIR)/.vimrc $(HOME_DIR)/.vimrc
 	@echo "✅ .vimrc linked"
 
+.PHONY: aws
 aws: brew-install-packages
 	@echo "☁️  Setting up AWS CLI..."
 	@if ! command -v aws &> /dev/null; then \
@@ -78,11 +85,13 @@ aws: brew-install-packages
 		echo "AWS CLI already installed"; \
 	fi
 
+.PHONY: clean
 clean:
 	@echo "🧹 Cleaning up temporary files..."
 	@rm -rf /tmp/setup-*
 	@rm -f AWSCLIV2.pkg
 
+.PHONY: help
 help:
 	@echo "🛠  Available Make targets:"
 	@echo ""
@@ -104,6 +113,7 @@ help:
 	@echo "  clean                    - Clean up temporary files"
 	@echo "  help                     - Show this help message"
 
+.PHONY: status
 status:
 	@echo "🔍 Checking installation status..."
 	@echo -n "Homebrew: "; if command -v brew &> /dev/null; then echo "✅ Installed"; else echo "❌ Not installed"; fi
