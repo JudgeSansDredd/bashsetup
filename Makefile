@@ -1,13 +1,13 @@
 HOME_DIR := $(HOME)
 BASH_DIR := $(HOME)/.bash
 CONFIGS_DIR := $(BASH_DIR)/configs
-BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontrol \
+BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontrol visual-studio-code \
 				 tlrc diff-so-fancy bat fzf volta lastpass-cli lazydocker lazygit \
 				 slack htop session-manager-plugin terraform jq macmediakeyforwarder \
 				 pyenv starship font-hack-nerd-font ack maccy
 
 .PHONY: all
-all: homebrew zshrc antigen brew-install-packages git vimrc aws starship-config clean
+all: homebrew zshrc antigen brew-install-packages git vimrc aws starship-config make-kube-dir clean
 	@echo "✅ Complete setup finished!"
 
 .PHONY: homebrew
@@ -22,7 +22,7 @@ homebrew:
 .PHONY: zshrc
 zshrc:
 	@echo "🐚 Setting up zshrc..."
-	@[ -e $(HOME_DIR)/.zshrc ] && rm -f $(HOME_DIR)/.zshrc
+	@rm -f $(HOME_DIR)/.zshrc
 	@ln -nsf $(CONFIGS_DIR)/.zshrc $(HOME_DIR)/.zshrc
 	@echo "✅ .zshrc linked"
 
@@ -68,7 +68,7 @@ git:
 .PHONY: vimrc
 vimrc:
 	@echo "📝 Setting up Vim configuration..."
-	@[ -e $(HOME_DIR)/.vimrc ] && rm -f $(HOME_DIR)/.vimrc
+	@rm -f $(HOME_DIR)/.vimrc
 	@ln -nsf $(CONFIGS_DIR)/.vimrc $(HOME_DIR)/.vimrc
 	@echo "✅ .vimrc linked"
 
@@ -84,6 +84,12 @@ aws: brew-install-packages
 	else \
 		echo "AWS CLI already installed"; \
 	fi
+
+.PHONY: make-kube-dir
+make-kube-dir:
+	@echo "📁 Creating .kube directory..."
+	@mkdir -p $(HOME_DIR)/.kube
+	@echo "✅ .kube directory created"
 
 .PHONY: clean
 clean:
