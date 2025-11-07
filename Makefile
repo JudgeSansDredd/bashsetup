@@ -4,10 +4,10 @@ CONFIGS_DIR := $(BASH_DIR)/configs
 BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontrol visual-studio-code \
 				 tlrc diff-so-fancy bat fzf volta lastpass-cli lazydocker lazygit \
 				 slack htop session-manager-plugin terraform jq macmediakeyforwarder \
-				 pyenv starship font-hack-nerd-font ack maccy
+				 pyenv starship font-hack-nerd-font ack maccy k9s
 
 .PHONY: all
-all: homebrew zshrc antigen brew-install-packages git vimrc aws starship-config make-kube-dir clean
+all: homebrew zshrc antigen brew-install-packages git-config vimrc aws starship-config make-kube-dir install-ktx clean
 	@echo "✅ Complete setup finished!"
 
 .PHONY: homebrew
@@ -50,8 +50,8 @@ starship-config:
 		echo "Starship not installed, skipping config"; \
 	fi
 
-.PHONY: git
-git:
+.PHONY: git-config
+git-config:
 	@echo "🔧 Setting up Git configuration..."
 	@git config --global core.excludesfile $(CONFIGS_DIR)/.gitignore.global
 	@git config --global core.hooksPath $(BASH_DIR)/githooks
@@ -90,6 +90,13 @@ make-kube-dir:
 	@echo "📁 Creating .kube directory..."
 	@mkdir -p $(HOME_DIR)/.kube
 	@echo "✅ .kube directory created"
+
+.PHONY: install-ktx
+install-ktx: make-kube-dir homebrew
+	@echo "📥 Installing ktx plugin..."
+	@brew tap peledies/formulae
+	@brew install ktx
+	@echo "✅ ktx plugin installed"; \
 
 .PHONY: clean
 clean:
