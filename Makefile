@@ -4,10 +4,33 @@ CONFIGS_DIR := $(BASH_DIR)/configs
 BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontrol visual-studio-code \
 				 tlrc diff-so-fancy bat fzf volta lastpass-cli lazydocker lazygit \
 				 slack htop session-manager-plugin terraform jq macmediakeyforwarder \
-				 pyenv starship font-hack-nerd-font ack maccy k9s
+				 pyenv starship font-hack-nerd-font ack maccy k9s rancher
 
 .PHONY: all
-all: homebrew zshrc antigen brew-install-packages git-config vimrc aws starship-config make-kube-dir install-ktx clean
+all:
+	@echo "🛠  Available Make targets:"
+	@echo ""
+	@echo "Main targets:"
+	@echo "  setup                    - Run complete setup"
+	@echo ""
+	@echo "Individual components:"
+	@echo "  homebrew                 - Install Homebrew"
+	@echo "  zshrc                    - Setup zsh configuration"
+	@echo "  antigen                  - Install Antigen zsh plugin manager"
+	@echo "  brew-install-packages    - Install all brew packages"
+	@echo "  git-config               - Configure Git"
+	@echo "  vimrc                    - Setup Vim configuration"
+	@echo "  aws                      - Install AWS CLI"
+	@echo "  starship-config          - Setup Starship prompt configuration"
+	@echo "  make-kube-dir            - Create .kube directory"
+	@echo "  install-ktx              - Install ktx plugin"
+	@echo ""
+	@echo "Utility:"
+	@echo "  status                   - Check installation status"
+	@echo "  clean                    - Clean up temporary files"
+
+.PHONY: setup
+setup: homebrew zshrc antigen brew-install-packages git-config vimrc aws starship-config make-kube-dir install-ktx clean
 	@echo "✅ Complete setup finished!"
 
 .PHONY: homebrew
@@ -103,28 +126,6 @@ clean:
 	@echo "🧹 Cleaning up temporary files..."
 	@rm -rf /tmp/setup-*
 	@rm -f AWSCLIV2.pkg
-
-.PHONY: help
-help:
-	@echo "🛠  Available Make targets:"
-	@echo ""
-	@echo "Main targets:"
-	@echo "  all                      - Run complete setup"
-	@echo ""
-	@echo "Individual components:"
-	@echo "  homebrew                 - Install Homebrew"
-	@echo "  zshrc                    - Setup zsh configuration"
-	@echo "  antigen                  - Install Antigen zsh plugin manager"
-	@echo "  brew-install-packages    - Install all brew packages"
-	@echo "  git                      - Configure Git"
-	@echo "  vimrc                    - Setup Vim configuration"
-	@echo "  aws                      - Install AWS CLI"
-	@echo "  starship-config          - Setup Starship prompt configuration"
-	@echo ""
-	@echo "Utility:"
-	@echo "  status                   - Check installation status"
-	@echo "  clean                    - Clean up temporary files"
-	@echo "  help                     - Show this help message"
 
 .PHONY: status
 status:
