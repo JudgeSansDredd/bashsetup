@@ -86,6 +86,7 @@ git-config:
 	@git config --global color.ui true
 	@git config --global alias.unstage "restore --staged"
 	@git config --global alias.uncommit "reset HEAD^"
+	@git config --global alias.noop "commit --allow-empty -m 'No-op commit'"
 	@echo "✅ Git configured"
 
 .PHONY: vimrc
