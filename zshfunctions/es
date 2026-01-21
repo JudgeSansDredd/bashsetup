@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+open -a "Google Chrome" https://bandwidth-jira.atlassian.net/browse/ES-$1

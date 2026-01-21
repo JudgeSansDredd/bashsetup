@@ -17,7 +17,7 @@ antigen bundle jump
 # antigen theme agnoster
 
 # Apply antigen changes
-antigen apply
+antige n apply
 
 # Change default user to suppress 'nstanley@hostname'
 DEFAULT_USER='nstanley'
@@ -38,6 +38,4 @@ source <(fzf --zsh)
 # NOTE: If you're using starship
 eval "$(starship init zsh)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+eval "$(jenv init -)"

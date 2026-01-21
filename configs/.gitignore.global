@@ -2,3 +2,4 @@
 .php-cs-fixer.php
 .DS_Store
 __pychache__
+.java-version
