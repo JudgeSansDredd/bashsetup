@@ -17,7 +17,7 @@ antigen bundle jump
 # antigen theme agnoster
 
 # Apply antigen changes
-antige n apply
+antigen apply
 
 # Change default user to suppress 'nstanley@hostname'
 DEFAULT_USER='nstanley'
