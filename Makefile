@@ -4,7 +4,8 @@ CONFIGS_DIR := $(BASH_DIR)/configs
 BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontrol visual-studio-code \
 				 tlrc diff-so-fancy bat fzf volta lastpass-cli lazydocker lazygit \
 				 slack htop session-manager-plugin terraform jq macmediakeyforwarder \
-				 pyenv starship font-hack-nerd-font ack maccy k9s rancher jenv copilot-cli
+				 pyenv starship font-hack-nerd-font ack maccy k9s rancher jenv copilot-cli \
+				 kubeseal
 
 .PHONY: all
 all:
