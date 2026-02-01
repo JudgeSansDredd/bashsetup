@@ -59,7 +59,14 @@ antigen:
 .PHONY: brew-install-packages
 brew-install-packages: homebrew
 	@echo "📦 Installing all brew packages..."
-	@brew install $(BREW_PACKAGES)
+	@for package in $(BREW_PACKAGES); do \
+		if brew list $$package &> /dev/null; then \
+			echo "⏭️  $$package already installed"; \
+		else \
+			echo "📥 Installing $$package..."; \
+			brew install $$package; \
+		fi; \
+	done
 	@brew cleanup
 	@echo "✅ Brew packages installed"
 
