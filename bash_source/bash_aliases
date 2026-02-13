@@ -7,7 +7,6 @@ alias python="python3"
 alias pip="pip3"
 alias dnsnuke="dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias dc="docker compose"
-alias pa="php artisan"
 alias dclean="yes | docker system prune -a && yes | docker volume prune -a"
 alias dstop='docker stop $(docker ps -q) 2> /dev/null'
 alias dkill='docker kill $(docker ps -q) 2> /dev/null'
@@ -27,5 +26,9 @@ alias whatsmyip="curl -s ifconfig.me | tee >(pbcopy); echo ''"
 alias whatismyip="whatsmyip"
 alias kk="cat $HOME/.ssh/id_rsa.pub | pbcopy"
 alias helcat="cat -pp -l yaml"
-alias npmlogin="npm config set @bw:registry https://bandwidth.jfrog.io/bandwidth/api/npm/npm-local-releases/ && npm login --registry=https://bandwidth.jfrog.io/bandwidth/api/npm/npm-local-releases/"
-alias awslogin="aws sso login --profile ES-Global-Lab_SWIManagedPowerUserLab"
+
+# Work-only aliases
+if [[ "$MACHINE_TYPE" == "work" ]]; then
+    alias npmlogin="npm config set @bw:registry https://bandwidth.jfrog.io/bandwidth/api/npm/npm-local-releases/ && npm login --registry=https://bandwidth.jfrog.io/bandwidth/api/npm/npm-local-releases/"
+    alias awslogin="aws sso login --profile ES-Global-Lab_SWIManagedPowerUserLab"
+fi

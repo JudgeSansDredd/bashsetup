@@ -26,6 +26,9 @@ all:
 	@echo "  make-kube-dir            - Create .kube directory"
 	@echo "  install-ktx              - Install ktx plugin"
 	@echo ""
+	@echo "Configuration:"
+	@echo "  set-machine-type         - Set machine type (personal/work)"
+	@echo ""
 	@echo "Utility:"
 	@echo "  status                   - Check installation status"
 	@echo "  clean                    - Clean up temporary files"
@@ -137,6 +140,41 @@ clean:
 	@rm -rf /tmp/setup-*
 	@rm -f AWSCLIV2.pkg
 
+.PHONY: bash-custom
+bash-custom:
+	@if [ ! -f $(BASH_DIR)/bash_source/bash_custom ]; then \
+		echo "📝 Creating bash_custom file..."; \
+		echo "# Machine Type: Set to 'personal' or 'work'" > $(BASH_DIR)/bash_source/bash_custom; \
+		echo "# This file is not tracked by git, so it's safe to customize per machine" >> $(BASH_DIR)/bash_source/bash_custom; \
+		echo "export MACHINE_TYPE=\"personal\"" >> $(BASH_DIR)/bash_source/bash_custom; \
+		echo "✅ bash_custom created with default MACHINE_TYPE=personal"; \
+	fi
+
+.PHONY: set-machine-type
+set-machine-type: bash-custom
+	@echo "⚙️  Setting machine type..."
+	@echo "Choose machine type:"
+	@echo "  1) personal"
+	@echo "  2) work"
+	@read -p "Enter choice [1-2]: " choice; \
+	if [ "$$choice" = "1" ]; then \
+		machine_type="personal"; \
+	elif [ "$$choice" = "2" ]; then \
+		machine_type="work"; \
+	else \
+		echo "❌ Invalid choice. Please enter 1 or 2."; \
+		exit 1; \
+	fi; \
+	if grep -q "export MACHINE_TYPE=" $(BASH_DIR)/bash_source/bash_custom; then \
+		sed -i '' "s/export MACHINE_TYPE=.*/export MACHINE_TYPE=\"$$machine_type\"/" $(BASH_DIR)/bash_source/bash_custom; \
+	else \
+		echo "" >> $(BASH_DIR)/bash_source/bash_custom; \
+		echo "# Machine Type: Set to 'personal' or 'work'" >> $(BASH_DIR)/bash_source/bash_custom; \
+		echo "export MACHINE_TYPE=\"$$machine_type\"" >> $(BASH_DIR)/bash_source/bash_custom; \
+	fi; \
+	echo "✅ Machine type set to: $$machine_type"; \
+	echo "💡 Reload your shell with: source ~/.zshrc"
+
 .PHONY: status
 status:
 	@echo "🔍 Checking installation status..."
@@ -147,3 +185,4 @@ status:
 	@echo -n "Git configured: "; if git config --global user.name &> /dev/null; then echo "✅ Configured"; else echo "❌ Not configured"; fi
 	@echo -n "Starship: "; if command -v starship &> /dev/null; then echo "✅ Installed"; else echo "❌ Not installed"; fi
 	@echo -n "AWS CLI: "; if command -v aws &> /dev/null; then echo "✅ Installed"; else echo "❌ Not installed"; fi
+	@echo -n "Machine type: "; if grep -q "export MACHINE_TYPE=" $(BASH_DIR)/bash_source/bash_custom; then grep "export MACHINE_TYPE=" $(BASH_DIR)/bash_source/bash_custom | sed 's/export MACHINE_TYPE=//;s/\"//g'; else echo "❌ Not set"; fi
