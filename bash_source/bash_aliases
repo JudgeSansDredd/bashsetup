@@ -1,6 +1,5 @@
 alias gs="git status"
 alias ls="eza"
-alias sp="shortpath"
 alias cat="bat"
 # alias ping="gping"
 alias python="python3"

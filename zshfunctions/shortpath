@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-current=$(pwd)
-cd "${current/\/Volumes\/CaseSensitive\/Projects/$HOME/Projects}"
