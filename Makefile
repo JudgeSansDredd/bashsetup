@@ -19,7 +19,6 @@ all:
 	@echo "  zshrc                    - Setup zsh configuration"
 	@echo "  antigen                  - Install Antigen zsh plugin manager"
 	@echo "  brew-install-packages    - Install all brew packages"
-	@echo "  volta-install-packages   - Install all Volta packages"
 	@echo "  git-config               - Configure Git"
 	@echo "  vimrc                    - Setup Vim configuration"
 	@echo "  aws                      - Install AWS CLI"
@@ -35,7 +34,7 @@ all:
 	@echo "  clean                    - Clean up temporary files"
 
 .PHONY: setup
-setup: homebrew zshrc antigen brew-install-packages volta-install-packages git-config vimrc aws starship-config make-kube-dir install-ktx clean
+setup: homebrew zshrc antigen brew-install-packages git-config vimrc aws starship-config make-kube-dir install-ktx clean
 	@echo "✅ Complete setup finished!"
 
 .PHONY: homebrew
@@ -121,12 +120,6 @@ aws: brew-install-packages
 	else \
 		echo "AWS CLI already installed"; \
 	fi
-
-.PHONY: volta-install-packages
-volta-install-packages: brew-install-packages
-	@echo "⚡ Installing Volta packages..."
-	@volta install openclaw@latest
-	@echo "✅ Volta packages installed"
 
 .PHONY: make-kube-dir
 make-kube-dir:
