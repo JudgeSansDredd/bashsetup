@@ -2,10 +2,11 @@ HOME_DIR := $(HOME)
 BASH_DIR := $(HOME)/.bash
 CONFIGS_DIR := $(BASH_DIR)/configs
 BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontrol visual-studio-code \
-				 tlrc diff-so-fancy bat fzf volta lastpass-cli lazydocker lazygit \
-				 slack htop session-manager-plugin terraform jq macmediakeyforwarder \
-				 pyenv starship font-hack-nerd-font ack maccy k9s rancher jenv copilot-cli \
-				 kubeseal helm
+				 tlrc diff-so-fancy bat fzf volta lazydocker lazygit bruno \
+				 slack htop jq macmediakeyforwarder maccy \
+				 pyenv jenv starship font-hack-nerd-font ack rancher
+WORK_ONLY_BREW_PACKAGES := mysql session-manager-plugin terraform jenv
+PERSONAL_ONLY_BREW_PACKAGES := k9s kubeseal helm
 
 .PHONY: all
 all:
@@ -60,8 +61,9 @@ antigen:
 	@echo "✅ Antigen downloaded"
 
 .PHONY: brew-install-packages
-brew-install-packages: homebrew
-	@echo "📦 Installing all brew packages..."
+brew-install-packages: homebrew bash-custom
+	@echo "📦 Installing brew packages..."
+	@echo "Installing base packages..."
 	@for package in $(BREW_PACKAGES); do \
 		if brew list $$package &> /dev/null; then \
 			echo "⏭️  $$package already installed"; \
@@ -70,6 +72,34 @@ brew-install-packages: homebrew
 			brew install $$package; \
 		fi; \
 	done
+	@if [ -f $(BASH_DIR)/bash_source/bash_custom ]; then \
+		machine_type=$$(grep "export MACHINE_TYPE=" $(BASH_DIR)/bash_source/bash_custom | sed 's/export MACHINE_TYPE=//;s/"//g'); \
+		if [ "$$machine_type" = "work" ]; then \
+			echo "📦 Installing work-only packages..."; \
+			for package in $(WORK_ONLY_BREW_PACKAGES); do \
+				if brew list $$package &> /dev/null; then \
+					echo "⏭️  $$package already installed"; \
+				else \
+					echo "📥 Installing $$package..."; \
+					brew install $$package; \
+				fi; \
+			done; \
+		elif [ "$$machine_type" = "personal" ]; then \
+			echo "📦 Installing personal-only packages..."; \
+			for package in $(PERSONAL_ONLY_BREW_PACKAGES); do \
+				if brew list $$package &> /dev/null; then \
+					echo "⏭️  $$package already installed"; \
+				else \
+					echo "📥 Installing $$package..."; \
+					brew install $$package; \
+				fi; \
+			done; \
+		else \
+			echo "⚠️  Machine type not set or invalid. Only installing base packages."; \
+		fi; \
+	else \
+		echo "⚠️  bash_custom not found. Only installing base packages."; \
+	fi
 	@brew cleanup
 	@echo "✅ Brew packages installed"
 
