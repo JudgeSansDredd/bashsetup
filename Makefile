@@ -5,7 +5,7 @@ BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontro
 				 tlrc diff-so-fancy bat fzf volta lazydocker lazygit bruno \
 				 slack htop jq macmediakeyforwarder maccy \
 				 pyenv jenv starship font-hack-nerd-font ack rancher
-WORK_ONLY_BREW_PACKAGES := mysql session-manager-plugin terraform jenv
+WORK_ONLY_BREW_PACKAGES := mysql session-manager-plugin terraform jenv tomcat
 PERSONAL_ONLY_BREW_PACKAGES := k9s kubeseal helm
 
 .PHONY: all
