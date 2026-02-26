@@ -129,6 +129,7 @@ git-config:
 	@git config --global alias.uncommit "reset HEAD^"
 	@git config --global alias.noop "commit --allow-empty -m 'No-op commit'"
 	@git config --global alias.tree "log --graph --abbrev-commit --decorate --all"
+	@git config --global alias.stale "branch --all --sort=-committerdate --format=\"%(align:25)%(refname:short)%(end)%09%(committerdate:relative)\""
 	@echo "✅ Git configured"
 
 .PHONY: vimrc
