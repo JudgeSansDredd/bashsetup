@@ -4,8 +4,8 @@ CONFIGS_DIR := $(BASH_DIR)/configs
 BREW_PACKAGES := alfred eza iterm2 google-chrome rectangle spotify monitorcontrol visual-studio-code \
 				 tlrc diff-so-fancy bat fzf volta lazydocker lazygit bruno \
 				 slack htop jq macmediakeyforwarder maccy \
-				 pyenv jenv starship font-hack-nerd-font ack rancher
-WORK_ONLY_BREW_PACKAGES := mysql session-manager-plugin terraform jenv tomcat
+				 pyenv jenv starship font-hack-nerd-font ack rancher k9s
+WORK_ONLY_BREW_PACKAGES := curl git gradle gzip httpie memcached openssh unzip vim libarchive gnu-tar jenv mysql session-manager-plugin terraform
 PERSONAL_ONLY_BREW_PACKAGES := k9s kubeseal helm
 
 .PHONY: all

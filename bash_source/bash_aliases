@@ -1,33 +1,25 @@
 alias gs="git status"
 alias ls="eza"
 alias cat="bat"
-# alias ping="gping"
 alias python="python3"
 alias pip="pip3"
 alias dnsnuke="dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias dc="docker compose"
 alias dclean="yes | docker system prune -a && yes | docker volume prune -a"
-alias dstop='docker stop $(docker ps -q) 2> /dev/null'
 alias dkill='docker kill $(docker ps -q) 2> /dev/null'
 alias lad='lazydocker'
 alias lag='lazygit'
 alias nn="rm -rf node_modules/; rm package-lock.json 2>/dev/null"
-alias nncc="rm -rf node_modules/; rm package-lock.json 2>/dev/null; npm cache clean --force"
 alias nnci="rm -rf node_modules/; npm ci"
 alias nni="rm -rf node_modules/; rm package-lock.json 2>/dev/null; npm install"
 alias bashupdate="rm $HOME/.bash/update; source $HOME/.bash/bash_source/bash_update"
-alias updatebash="bashupdate"
 alias uuid="uuidgen | awk '{print tolower(\$0)}' | tr -d '\n' | tee >(pbcopy) && echo ''"
 alias j=jump
-alias resetbt="sudo pkill bluetoothd"
-alias restartbt="resetbt"
 alias whatsmyip="curl -s ifconfig.me | tee >(pbcopy); echo ''"
 alias whatismyip="whatsmyip"
-alias kk="cat $HOME/.ssh/id_rsa.pub | pbcopy"
 alias helcat="cat -pp -l yaml"
 
 # Work-only aliases
 if [[ "$MACHINE_TYPE" == "work" ]]; then
     alias npmlogin="npm config set @bw:registry https://bandwidth.jfrog.io/bandwidth/api/npm/npm-local-releases/ && npm login --registry=https://bandwidth.jfrog.io/bandwidth/api/npm/npm-local-releases/"
-    alias awslogin="aws sso login --profile ES-Global-Lab_SWIManagedPowerUserLab"
 fi

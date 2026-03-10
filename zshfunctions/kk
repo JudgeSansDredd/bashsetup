@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Select an SSH public key and copy it to clipboard
+selected_key=$(find ~/.ssh -name "*.pub" -type f 2>/dev/null | fzf --height=40% --reverse --prompt="Select SSH key: " --delimiter=/ --with-nth=-1)
+
+if [ -n "$selected_key" ]; then
+    cat "$selected_key" | pbcopy
+    echo "✓ Copied ${selected_key##*/} to clipboard"
+else
+    echo "No key selected"
+fi

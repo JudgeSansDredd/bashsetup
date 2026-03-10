@@ -1,14 +1,19 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-setup_whiptail
+echo "Create Basic Auth Token"
+echo ""
 
-TOKEN_USERNAME=$(whiptail --inputbox "What is the username?" $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "Create Basic Auth Token" 3>&1 1>&2 2>&3)
-TOKEN_PASSWORD=$(whiptail --passwordbox "What is the password?" $BOX_HEIGHT $BOX_WIDTH $LASTPASS_KEY_NAME --title "Create Basic Auth Token" 3>&1 1>&2 2>&3)
+read "TOKEN_USERNAME?What is the username? "
+read -s "TOKEN_PASSWORD?What is the password? "
+echo ""
 
 TOKEN=$(echo -n "${TOKEN_USERNAME}:${TOKEN_PASSWORD}" | base64)
 
-if $(whiptail --yesno "Your token is: '$TOKEN'. Do you want to copy it to your clipboard?" $BOX_HEIGHT $BOX_WIDTH --title "Create Basic Auth Token" 3>&1 1>&2 2>&3);
-then
-    echo -n "Basic $TOKEN" | pbcopy
+echo ""
+read -k "REPLY?Your token is: '$TOKEN'. Do you want to copy it to your clipboard? (y/n) "
+echo ""
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo -n "$TOKEN" | pbcopy
     echo "Basic auth token copied to clipboard"
 fi
